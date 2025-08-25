@@ -1,0 +1,79 @@
+{
+  "header": {
+    "title": "Studio",
+    "subtitle": "Temukan dan jelajahi alat-alat canggih yang telah saya ciptakan untuk meningkatkan alur kerja Anda. Setiap aplikasi dirancang dengan presisi dan passion untuk menyelesaikan tantangan dunia nyata."
+  },
+  "title": "Studio",
+  "subtitle": "Akses cepat ke alat dan aplikasi",
+  "search": {
+    "placeholder": "Cari alat...",
+    "noResults": "Tidak ada alat ditemukan"
+  },
+  "categories": {
+    "all": "Semua Alat",
+    "development": "Pengembangan",
+    "design": "Desain",
+    "productivity": "Produktivitas",
+    "utilities": "Utilitas"
+  },
+  "tools": [
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "description": "Editor kode dengan fitur canggih",
+      "category": "development",
+      "icon": "code",
+      "url": "https://code.visualstudio.com",
+      "color": "#007ACC"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "description": "Platform desain kolaboratif",
+      "category": "design",
+      "icon": "palette",
+      "url": "https://figma.com",
+      "color": "#F24E1E"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Kontrol versi dan kolaborasi",
+      "category": "development",
+      "icon": "github",
+      "url": "https://github.com",
+      "color": "#181717"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "Ruang kerja all-in-one",
+      "category": "productivity",
+      "icon": "notebook",
+      "url": "https://notion.so",
+      "color": "#000000"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "Deploy dan host aplikasi",
+      "category": "development",
+      "icon": "cloud",
+      "url": "https://vercel.com",
+      "color": "#000000"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "description": "Platform pengembangan API",
+      "category": "development",
+      "icon": "api",
+      "url": "https://postman.com",
+      "color": "#FF6C37"
+    }
+  ],
+  "stats": {
+    "totalTools": "Total Alat",
+    "categories": "Kategori"
+  }
+}

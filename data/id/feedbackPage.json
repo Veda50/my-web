@@ -1,0 +1,47 @@
+{
+  "title": "Umpan Balik Komunitas",
+  "subtitle": "Bagikan pemikiran Anda, laporkan masalah, dan diskusikan perbaikan dengan komunitas kami",
+  "searchPlaceholder": "Cari diskusi...",
+  "newThreadButton": "Mulai Diskusi Baru",
+  "categories": {
+    "all": "Semua",
+    "feedback": "Umpan Balik",
+    "bugs": "Laporan Bug",
+    "features": "Permintaan Fitur",
+    "general": "Diskusi Umum"
+  },
+  "sortOptions": {
+    "latest": "Terbaru",
+    "popular": "Paling Populer",
+    "oldest": "Terlama"
+  },
+  "threadStats": {
+    "replies": "balasan",
+    "views": "dilihat",
+    "lastActivity": "Aktivitas terakhir"
+  },
+  "emptyState": {
+    "title": "Belum ada diskusi",
+    "description": "Jadilah yang pertama memulai percakapan di komunitas ini!",
+    "action": "Mulai Diskusi"
+  },
+  "threadDetail": {
+    "backButton": "Kembali ke Diskusi",
+    "replyButton": "Balas",
+    "replyPlaceholder": "Bagikan pemikiran Anda...",
+    "submitReply": "Kirim Balasan",
+    "editButton": "Edit",
+    "deleteButton": "Hapus",
+    "reportButton": "Laporkan",
+    "likeButton": "Suka",
+    "shareButton": "Bagikan"
+  },
+  "newThread": {
+    "title": "Mulai Diskusi Baru",
+    "titlePlaceholder": "Apa yang ada di pikiran Anda?",
+    "categoryLabel": "Kategori",
+    "contentPlaceholder": "Bagikan pemikiran, umpan balik, atau pertanyaan Anda...",
+    "submitButton": "Kirim Diskusi",
+    "cancelButton": "Batal"
+  }
+}

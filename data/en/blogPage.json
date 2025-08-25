@@ -1,0 +1,68 @@
+{
+  "title": "Blog",
+  "subtitle": "Thoughts, tutorials, and insights",
+  "search": {
+    "placeholder": "Search articles...",
+    "noResults": "No articles found"
+  },
+  "categories": {
+    "all": "All Posts",
+    "tutorial": "Tutorials",
+    "thoughts": "Thoughts",
+    "tech": "Technology",
+    "career": "Career"
+  },
+  "filters": {
+    "recent": "Recent",
+    "popular": "Popular",
+    "featured": "Featured"
+  },
+  "readTime": "min read",
+  "publishedOn": "Published on",
+  "author": "Author",
+  "tags": "Tags",
+  "relatedPosts": "Related Posts",
+  "shareArticle": "Share Article",
+  "backToBlog": "Back to Blog",
+  "articles": [
+    {
+      "id": "getting-started-nextjs",
+      "title": "Getting Started with Next.js 14",
+      "excerpt": "A comprehensive guide to building modern web applications with Next.js 14 and the App Router.",
+      "content": "Next.js 14 introduces powerful new features that make building web applications faster and more efficient...",
+      "category": "tutorial",
+      "tags": ["nextjs", "react", "javascript"],
+      "author": "John Doe",
+      "publishedAt": "2024-01-15",
+      "readTime": 8,
+      "featured": true,
+      "image": "/placeholder.svg?height=400&width=800"
+    },
+    {
+      "id": "modern-css-techniques",
+      "title": "Modern CSS Techniques for 2024",
+      "excerpt": "Explore the latest CSS features and techniques that will improve your web development workflow.",
+      "content": "CSS has evolved significantly in recent years, introducing new features that make styling more powerful...",
+      "category": "tech",
+      "tags": ["css", "frontend", "webdev"],
+      "author": "Jane Smith",
+      "publishedAt": "2024-01-10",
+      "readTime": 6,
+      "featured": false,
+      "image": "/placeholder.svg?height=400&width=800"
+    },
+    {
+      "id": "developer-career-tips",
+      "title": "5 Tips for Growing Your Developer Career",
+      "excerpt": "Practical advice for advancing your career as a software developer in today's competitive market.",
+      "content": "Building a successful career in software development requires more than just technical skills...",
+      "category": "career",
+      "tags": ["career", "advice", "growth"],
+      "author": "Mike Johnson",
+      "publishedAt": "2024-01-05",
+      "readTime": 5,
+      "featured": false,
+      "image": "/placeholder.svg?height=400&width=800"
+    }
+  ]
+}

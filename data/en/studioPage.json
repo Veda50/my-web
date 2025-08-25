@@ -1,0 +1,79 @@
+{
+  "header": {
+    "title": "Studio",
+    "subtitle": "Discover and explore the powerful tools I've crafted to enhance your workflow. Each application is designed with precision and passion to solve real-world challenges."
+  },
+  "title": "Studio",
+  "subtitle": "Quick access to tools and applications",
+  "search": {
+    "placeholder": "Search tools...",
+    "noResults": "No tools found"
+  },
+  "categories": {
+    "all": "All Tools",
+    "development": "Development",
+    "design": "Design",
+    "productivity": "Productivity",
+    "utilities": "Utilities"
+  },
+  "tools": [
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "description": "Code editor with powerful features",
+      "category": "development",
+      "icon": "code",
+      "url": "https://code.visualstudio.com",
+      "color": "#007ACC"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "description": "Collaborative design platform",
+      "category": "design",
+      "icon": "palette",
+      "url": "https://figma.com",
+      "color": "#F24E1E"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Version control and collaboration",
+      "category": "development",
+      "icon": "github",
+      "url": "https://github.com",
+      "color": "#181717"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "All-in-one workspace",
+      "category": "productivity",
+      "icon": "notebook",
+      "url": "https://notion.so",
+      "color": "#000000"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "Deploy and host applications",
+      "category": "development",
+      "icon": "cloud",
+      "url": "https://vercel.com",
+      "color": "#000000"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "description": "API development platform",
+      "category": "development",
+      "icon": "api",
+      "url": "https://postman.com",
+      "color": "#FF6C37"
+    }
+  ],
+  "stats": {
+    "totalTools": "Total Tools",
+    "categories": "Categories"
+  }
+}

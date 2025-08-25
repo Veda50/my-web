@@ -1,0 +1,564 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --popover: #f1f5f9;
+  --popover-foreground: #1f2937;
+  --primary: #1f2937;
+  --primary-foreground: #ffffff;
+  --secondary: #6b7280;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #6b7280;
+  --accent: #8b5cf6;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #f1f5f9;
+  --ring: rgba(139, 92, 246, 0.5);
+  --chart-1: #1d4ed8;
+  --chart-2: #047857;
+  --chart-3: #dc2626;
+  --chart-4: #f59e0b;
+  --chart-5: #8b5cf6;
+  --radius: 0.25rem;
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #1f2937;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: rgba(139, 92, 246, 0.5);
+
+  /* Skills page specific tokens */
+  --skills-particle-primary: #3b82f6;
+  --skills-particle-secondary: #60a5fa;
+  --skills-card-hover: #dbeafe;
+  --skills-icon-glow: rgba(59, 130, 246, 0.3);
+
+  /* Added studio page design tokens */
+  --studio-background: #ffffff;
+  --studio-card: #f0f9ff;
+  --studio-card-foreground: #1e293b;
+  --studio-primary: #0ea5e9;
+  --studio-primary-foreground: #ffffff;
+  --studio-accent: #0284c7;
+  --studio-accent-foreground: #ffffff;
+  --studio-border: #e0f2fe;
+
+  /* Added blog page design tokens */
+  --blog-background: #ffffff;
+  --blog-card: #f8fafc;
+  --blog-card-foreground: #1e293b;
+  --blog-primary: #3b82f6;
+  --blog-primary-foreground: #ffffff;
+  --blog-accent: #1d4ed8;
+  --blog-accent-foreground: #ffffff;
+  --blog-muted: #f1f5f9;
+  --blog-muted-foreground: #4b5563;
+}
+
+/* Enhanced dark mode colors with better contrast and visual hierarchy */
+.dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.08 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.6 0.15 240);
+  --accent-foreground: oklch(0.95 0 0);
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.6 0.15 240 / 0.5);
+  --chart-1: oklch(0.6 0.15 240);
+  --chart-2: oklch(0.55 0.12 150);
+  --chart-3: oklch(0.6 0.18 30);
+  --chart-4: oklch(0.5 0.15 300);
+  --chart-5: oklch(0.7 0.1 60);
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.9 0 0);
+  --sidebar-primary: oklch(0.6 0.15 240);
+  --sidebar-primary-foreground: oklch(0.95 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.9 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.6 0.15 240 / 0.5);
+
+  /* Dark mode skills tokens */
+  --skills-particle-primary: oklch(0.6 0.15 240);
+  --skills-particle-secondary: oklch(0.7 0.12 240);
+  --skills-card-hover: oklch(0.15 0.02 240);
+  --skills-icon-glow: oklch(0.6 0.15 240 / 0.3);
+
+  /* Updated dark mode studio tokens to blue theme */
+  --studio-background: oklch(0.08 0 0);
+  --studio-card: oklch(0.12 0.02 240);
+  --studio-card-foreground: oklch(0.95 0 0);
+  --studio-primary: oklch(0.6 0.15 240);
+  --studio-primary-foreground: oklch(0.95 0 0);
+  --studio-accent: oklch(0.55 0.12 240);
+  --studio-accent-foreground: oklch(0.95 0 0);
+  --studio-border: oklch(0.2 0.02 240);
+
+  /* Updated dark mode blog tokens to blue theme */
+  --blog-background: oklch(0.08 0 0);
+  --blog-card: oklch(0.12 0.01 240);
+  --blog-card-foreground: oklch(0.95 0 0);
+  --blog-primary: oklch(0.6 0.15 240);
+  --blog-primary-foreground: oklch(0.95 0 0);
+  --blog-accent: oklch(0.55 0.12 240);
+  --blog-accent-foreground: oklch(0.95 0 0);
+  --blog-muted: oklch(0.15 0.01 240);
+  --blog-muted-foreground: oklch(0.65 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added custom font variables for typography */
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-source-sans);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom animations for the profile page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Added new animations for interactive code display */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    border-color: transparent;
+  }
+  51%,
+  100% {
+    border-color: currentColor;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(132, 204, 22, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(132, 204, 22, 0.6);
+  }
+}
+
+/* Added new professional animations for hero section */
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes tech-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes card-hover-lift {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+@keyframes sequential-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Added portfolio-specific animations */
+@keyframes project-card-hover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@keyframes filter-badge-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes stagger-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Added skills page specific animations */
+@keyframes skill-card-hover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.1);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes skill-icon-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px var(--skills-icon-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px var(--skills-icon-glow));
+  }
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+  }
+}
+
+/* Added modern particle animations for geometric shapes */
+@keyframes particle-modern {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-15px) translateX(8px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-5px) translateX(-12px) rotate(180deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(10px) translateX(5px) rotate(270deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  33% {
+    transform: translateY(-25px) translateX(15px) scale(1.1);
+  }
+  66% {
+    transform: translateY(15px) translateX(-20px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+}
+
+@keyframes particle-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  animation: typewriter 2s steps(40, end), blink 1s step-end infinite;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.gentle-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+.tech-pulse {
+  animation: tech-pulse 2s ease-in-out infinite;
+}
+
+.gradient-shift {
+  background: linear-gradient(-45deg, #f8fafc, #e2e8f0, #cbd5e1, #94a3b8);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.dark .gradient-shift {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #475569);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.card-hover-lift {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover-lift:hover {
+  animation: card-hover-lift 0.3s ease-in-out forwards;
+}
+
+.sequential-fade-in {
+  opacity: 0;
+  animation: sequential-fade-in 0.6s ease-out forwards;
+}
+
+.project-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card-hover:hover {
+  animation: project-card-hover 0.3s ease-out forwards;
+}
+
+.filter-badge-pulse:hover {
+  animation: filter-badge-pulse 0.2s ease-in-out;
+}
+
+.stagger-fade-in {
+  opacity: 0;
+  animation: stagger-fade-in 0.6s ease-out forwards;
+}
+
+.skill-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card-hover:hover {
+  animation: skill-card-hover 0.3s ease-out forwards;
+}
+
+.skill-icon-glow:hover {
+  animation: skill-icon-glow 2s ease-in-out infinite;
+}
+
+.particle-float {
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+.particle-modern {
+  animation: particle-modern 8s ease-in-out infinite, particle-drift 12s linear infinite;
+}
+
+.particle-modern:nth-child(odd) {
+  animation: particle-modern 10s ease-in-out infinite reverse, particle-pulse 6s ease-in-out infinite;
+}
+
+.particle-modern:nth-child(3n) {
+  animation: particle-drift 15s linear infinite, particle-pulse 4s ease-in-out infinite;
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Proyek Saya",
+  "subtitle": "Showcase karya pengembangan dan solusi kreatif saya",
+  "filters": {
+    "all": "Semua Proyek",
+    "techStack": "Tech Stack",
+    "category": "Kategori",
+    "availability": "Ketersediaan",
+    "clearFilters": "Hapus Filter",
+    "searchPlaceholder": "Cari proyek..."
+  },
+  "categories": {
+    "development": "Pengembangan",
+    "production": "Produksi",
+    "private": "Pribadi",
+    "archived": "Arsip"
+  },
+  "availability": {
+    "github": "GitHub Tersedia",
+    "live": "Demo Live Tersedia",
+    "both": "Keduanya Tersedia"
+  },
+  "projectCard": {
+    "viewGithub": "Lihat GitHub",
+    "viewLive": "Demo Live",
+    "techStack": "Tech Stack",
+    "category": "Kategori"
+  },
+  "noResults": {
+    "title": "Tidak ada proyek ditemukan",
+    "description": "Coba sesuaikan filter atau kata kunci pencarian Anda"
+  },
+  "stats": {
+    "totalProjects": "Total Proyek",
+    "categories": "Kategori",
+    "technologies": "Teknologi"
+  }
+}

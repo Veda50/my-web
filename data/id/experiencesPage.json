@@ -1,0 +1,45 @@
+{
+  "title": "Pengalaman Profesional",
+  "subtitle": "Timeline komprehensif perjalanan karir dan pertumbuhan profesional saya",
+  "filterLabel": "Filter berdasarkan Tipe:",
+  "filterOptions": {
+    "all": "Semua",
+    "fulltime": "Full-time",
+    "freelance": "Freelance",
+    "internship": "Magang",
+    "contract": "Kontrak"
+  },
+  "present": "Sekarang",
+  "experiences": [
+    {
+      "id": "1",
+      "period": "Oktober 2024 - Sekarang",
+      "role": "Frontend Developer",
+      "company": "PT Global Data Inspirasi",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Mengeksekusi slicing komponen desain UI menjadi elemen ReactJS yang responsif dan berkualitas tinggi, memastikan performa optimal dan akurasi pixel-perfect. Mengintegrasikan data API dengan mulus sambil berkolaborasi dengan developer backend dan tim desain untuk mengimplementasikan fitur baru, meningkatkan efisiensi sistem dan engagement pengguna.",
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "Next.js"]
+    },
+    {
+      "id": "2",
+      "period": "Februari 2024 - Juni 2024",
+      "role": "Software Developer",
+      "company": "PT Telekomunikasi Seluler",
+      "type": "internship",
+      "location": "Jakarta, Indonesia",
+      "description": "Mengembangkan fitur login berbasis sesi, mengimplementasikan cronjob harian in-memory untuk pengambilan data KPI, berperan sebagai Scrum Master, dan mengkoordinasikan aktivitas tim. Merancang dashboard analitik dan mengembangkan komponen server-side untuk query database, meningkatkan visualisasi data dan efisiensi sistem.",
+      "technologies": ["Node.js", "Express", "MySQL", "React", "Chart.js"]
+    },
+    {
+      "id": "3",
+      "period": "Desember 2023 - Januari 2024",
+      "role": "Web Developer",
+      "company": "Nine Dragon Labs",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Meningkatkan proyek yang sudah ada dengan mengembangkan dan mengintegrasikan fitur baru. Mengembangkan dan mengimplementasikan halaman pembayaran menggunakan komponen React dan Bootstrap untuk menyederhanakan proses transaksi, serta mengimplementasikan modul generasi invoice PDF untuk mengotomatisasi pembuatan invoice.",
+      "technologies": ["React", "Bootstrap", "Node.js", "PDF.js"]
+    }
+  ]
+}
