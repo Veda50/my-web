@@ -8,10 +8,14 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export default function Portfolio() {
   const { language } = useLanguage()
   const data = language === "en" ? enLanding.portfolio : idLanding.portfolio
+
+  const router = useRouter();
 
   return (
     <section
@@ -35,11 +39,20 @@ export default function Portfolio() {
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.projects.map((project: any, index: number) => {
-            const hasLive = Boolean(project.liveUrl || project.live || project.liveDemoUrl)
-            const hasGit = Boolean(project.githubUrl || project.github || project.sourceCodeUrl)
+            const hasLive = Boolean(
+              project.liveUrl || project.live || project.liveDemoUrl
+            );
+            const hasGit = Boolean(
+              project.githubUrl || project.github || project.sourceCodeUrl
+            );
 
-            const liveHref = project.liveUrl || project.live || project.liveDemoUrl || "#"
-            const gitHref = project.githubUrl || project.github || project.sourceCodeUrl || "#"
+            const liveHref =
+              project.liveUrl || project.live || project.liveDemoUrl || "#";
+            const gitHref =
+              project.githubUrl ||
+              project.github ||
+              project.sourceCodeUrl ||
+              "#";
 
             return (
               <Card
@@ -87,7 +100,12 @@ export default function Portfolio() {
                             className="bg-primary text-primary-foreground hover:bg-primary/90"
                             asChild
                           >
-                            <a href={liveHref} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
+                            <a
+                              href={liveHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="Live Demo"
+                            >
                               <ExternalLink className="w-4 h-4" />
                             </a>
                           </Button>
@@ -99,7 +117,12 @@ export default function Portfolio() {
                             className="bg-background/90 text-foreground border-border hover:bg-background"
                             asChild
                           >
-                            <a href={gitHref} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repo">
+                            <a
+                              href={gitHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="GitHub Repo"
+                            >
                               <Github className="w-4 h-4" />
                             </a>
                           </Button>
@@ -133,7 +156,7 @@ export default function Portfolio() {
                   </p>
                 </CardContent>
               </Card>
-            )
+            );
           })}
         </div>
 
@@ -144,14 +167,15 @@ export default function Portfolio() {
             size="lg"
             className="
               border-border text-foreground bg-transparent
-              hover:bg-muted/40
+              hover:bg-muted/40 
             "
+            onClick={() => router.push('/my-work/projects')}
           >
-            {language === "id" ? "Lihat Semua Proyek" : "View All Projects"}
-            <ExternalLink className="w-4 h-4 ml-2" />
+              {language === "id" ? "Lihat Semua Proyek" : "View All Projects"}
+              <ExternalLink className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }

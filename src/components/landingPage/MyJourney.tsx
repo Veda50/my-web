@@ -5,6 +5,7 @@ import { MapPin, ArrowRight } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
+import Link from "next/link"
 
 export default function MyJourney() {
   const { language } = useLanguage()
@@ -146,7 +147,7 @@ export default function MyJourney() {
           </div>
 
           {/* Timeline footer / more */}
-          <div className="relative mt-8 ml-10 text-center">
+          <Link href="/about/experiences" className="relative mt-8 ml-10 text-center">
             <div className="flex items-center justify-center">
               <div className="flex flex-col items-center space-y-2 text-slate-400">
                 <div className="w-2 h-2 bg-slate-300 dark:bg-slate-700 rounded-full animate-pulse" />
@@ -165,7 +166,7 @@ export default function MyJourney() {
                 </span>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
