@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "name": "Veda Bezaleel",
+    "title": "Full Stack Developer",
+    "location": "Semarang, Indonesia",
+    "headline": "Membangun Pengalaman Digital yang Bermakna",
+    "subheadline": "Saya membuat aplikasi web modern dan skalabel dengan kode yang bersih serta pengalaman pengguna yang intuitif. Mari wujudkan ide Anda.",
+    "stats": {
+      "projects": {
+        "value": 5,
+        "label": "Project Selesai"
+      },
+      "experience": {
+        "value": 1,
+        "label": "Tahun Pengalaman"
+      }
+    },
+    "techStack": [
+      "TypeScript",
+      "Next.js",
+      "Prisma"
+    ],
+    "buttons": {
+      "viewWork": "Lihat Karya Saya",
+      "getInTouch": "Hubungi Saya"
+    },
+    "status": "Tersedia untuk proyek baru"
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "subtitle": "Pengembang yang antusias dengan kecintaan untuk menciptakan solusi inovatif",
+    "skills": [
+      {
+        "title": "Perfeksionis Pixel",
+        "category": "Frontend",
+        "description": "Fokus pada slicing detail komponen desain dengan toleransi minimal untuk mencapai antarmuka yang responsif dan pixel-perfect yang setia pada desain Figma.",
+        "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
+      },
+      {
+        "title": "Arsitek Logika",
+        "category": "Rekayasa Backend",
+        "description": "Merancang solusi backend yang logis dan optimal untuk kinerja puncak di berbagai kondisi dengan arsitektur yang dapat diskalakan dan integrasi API yang efisien.",
+        "technologies": ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis"]
+      },
+      {
+        "title": "Orkestrator Cloud",
+        "category": "Deployments & Ops",
+        "description": "Menerapkan strategi deployment yang menyeimbangkan performa tinggi dan efisiensi biaya, memastikan operasi yang andal dan kolaborasi tim teknis yang mulus.",
+        "technologies": ["Git", "Github", "Google Cloud", "Cloudflare"]
+      },
+      {
+        "title": "AI Explorer",
+        "category": "AI/ML",
+        "description": "Saya terbuka dengan perkembangan AI, cepat beradaptasi, dan mampu mengimplementasikannya ke aplikasi nyata — dari prototipe hingga produksi.",
+        "technologies": ["OpenAI API", "Vercel AI SDK", "LangChain", "Hugging Face", "RAG / Embeddings", "Vector DB (pgvector/Pinecone)"]
+      }
+    ]
+  },
+  "journey": {
+    "title": "Perjalanan Saya",
+    "subtitle": "Linimasa pertumbuhan profesional dan pencapaian saya",
+    "otherLabel": "Other experience",
+    "experiences": [
+      {
+        "role": "Fullstack Developer (Freelance)",
+        "company": "Datains | PT Global Data Inspirasi",
+        "location": "Remote",
+        "period": "Okt 2024 - Sekarang",
+        "achievements": [
+          "Mengonversi desain Figma menjadi komponen UI yang responsif dan pixel-perfect.",
+          "Berkolaborasi erat dengan tim backend untuk mengintegrasikan fitur baru.",
+          "Membangun aplikasi Laravel–React full-stack end-to-end, dari basis data hingga UI.",
+          "Merancang REST API, autentikasi, dan logika domain di Laravel; mengintegrasikan layanan pihak ketiga.",
+          "Membangun antarmuka React yang aksesibel."
+        ]
+      },
+      {
+        "role": "Software Developer (Magang)",
+        "company": "PT Telekomunikasi Seluler",
+        "location": "Semarang, Indonesia",
+        "period": "Feb 2024 - Jun 2024",
+        "achievements": [
+          "Membangun fitur login berbasis sesi untuk meningkatkan autentikasi dan keamanan.",
+          "Mengoptimalkan proses backend dengan Next.js untuk meningkatkan performa sistem.",
+          "Bersama data engineer, merancang dan mengoperasikan strategi penskalaan basis data.",
+          "Mengarahkan desain skema, indeks, dan kueri untuk menyeimbangkan performa, reliabilitas, dan biaya.",
+          "Menerapkan observabilitas dan penyetelan — profiling, connection pooling, caching — agar latensi tetap stabil saat skala meningkat.",
+          "Menyelaraskan tim dan stakeholder untuk menerjemahkan kebutuhan menjadi roadmap prioritas dan rencana sprint."
+        ]
+      },
+      {
+        "role": "Web Developer (Freelance)",
+        "company": "Nine Dragon Labs",
+        "location": "Remote",
+        "period": "Des 2023 - Jan 2024",
+        "achievements": [
+          "Mengembangkan dan mengintegrasikan halaman pembayaran.",
+          "Mengimplementasikan pembuatan invoice PDF otomatis untuk memperlancar transaksi.",
+          "Mengintegrasikan fitur baru dengan database Firestore."
+        ]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portofolio",
+    "subtitle": "Showcase karya dan proyek terbaru saya",
+    "projects": [
+      {
+        "title": "Sparka Smart Parking System",
+        "category": "Pengembangan Web",
+        "description": "Membangun Smart Parking System dengan antarmuka berbasis peran untuk pengguna, admin, dan operator. Frontend menggunakan Next.js, backend Lumen PHP untuk reservasi dan pembaruan realtime. Dideploy di GCP dengan Docker & Cloud Run.",
+        "image": "/img/projects/sparka.gif",
+        "technologies": ["Next.js", "Lumen PHP", "Docker", "GCP", "Cloud Run"],
+        "liveUrl": "#",
+        "githubUrl": "#"
+      },
+      {
+        "title": "Remosto Recommendation System",
+        "category": "Pengembangan Web",
+        "description": "Membuat platform web responsif dengan peta dan rekomendasi item berbasis AI menggunakan computer vision. Membangun endpoint RESTful API dan melakukan pengujian end-to-end dengan Cypress.",
+        "image": "/img/projects/remosto.png",
+        "technologies": ["Cypress", "Next.js"],
+        "liveUrl": "#",
+        "githubUrl": "#"
+      },
+      {
+        "title": "LoRa Realtime Monitoring",
+        "category": "IoT & Pengembangan Web",
+        "description": "Mengembangkan antarmuka monitoring realtime untuk smart lighting berbasis LoRa di PT Global Data Inspirasi. Mengintegrasikan Flask REST API dengan MQTT pub/sub di platform Antares, menghubungkan perangkat IoT fisik ke UI web.",
+        "image": "/img/none.png",
+        "technologies": ["Flask", "MQTT", "Antares", "WebSocket"],
+        "liveUrl": "#",
+        "githubUrl": "#"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Testimoni",
+    "subtitle": "Apa kata klien dan rekan kerja tentang pengalaman bekerja dengan saya",
+    "items": [
+      {
+        "content": "Alex memberikan hasil yang luar biasa pada platform e-commerce kami. Perhatian terhadap detail dan keahlian teknisnya melampaui ekspektasi. Proyek selesai tepat waktu dan dalam anggaran.",
+        "author": "Sarah Chen",
+        "role": "Product Manager",
+        "company": "TechStart Inc.",
+        "avatar": "/professional-woman-headshot.png"
+      },
+      {
+        "content": "Bekerja dengan Alex sangat mengubah permainan bagi startup kami. Ia tidak hanya membangun MVP kami, tetapi juga memberi wawasan berharga tentang skalabilitas dan pengalaman pengguna. Sangat direkomendasikan!",
+        "author": "Michael Rodriguez",
+        "role": "CEO",
+        "company": "InnovateLab",
+        "avatar": "/professional-man-headshot.png"
+      },
+      {
+        "content": "Keahlian full-stack dan kemampuan pemecahan masalah Alex luar biasa. Ia mengubah kebutuhan kompleks kami menjadi aplikasi elegan dan mudah digunakan yang disukai pelanggan.",
+        "author": "Emily Watson",
+        "role": "CTO",
+        "company": "DataFlow Solutions",
+        "avatar": "/creative-designer-headshot.png"
+      }
+    ]
+  },
+  "contacts": {
+    "title": "Ayo Terhubung dan Berkolaborasi",
+    "subtitle": "Siap mewujudkan ide Anda? Saya ingin mendengar tentang proyek Anda dan mencari cara agar kita dapat bekerja sama menciptakan sesuatu yang luar biasa.",
+    "cta": {
+      "primary": "Kirim Pesan",
+      "secondary": "Jadwalkan Panggilan"
+    }
+  }
+}

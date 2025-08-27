@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Home",
+    "route": "/",
+    "sub": [
+      {
+        "title": "About",
+        "route": "/"
+      },
+      {
+        "title": "My Experiences",
+        "route": "/about/experiences"
+      },
+      {
+        "title": "My Skills",
+        "route": "/about/skills"
+      }
+    ]
+  },
+  {
+    "title": "My Work",
+    "route": "/my-work/projects",
+    "sub": [
+      {
+        "title": "Projects",
+        "route": "/my-work/projects"
+      },
+      {
+        "title": "Studio",
+        "route": "/my-work/studio"
+      },
+      {
+        "title": "Blogs",
+        "route": "/my-work/blogs"
+      },
+      {
+        "title": "Code Snippets",
+        "route": "/my-work/snippets"
+      }
+    ]
+  },
+  {
+    "title": "Feedback",
+    "route": "/feedback"
+  }
+]

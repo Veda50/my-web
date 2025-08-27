@@ -1,9 +1,0 @@
-{
-  "title": "404 - Halaman Tidak Ditemukan",
-  "subtitle": "Ups! Halaman yang Anda cari tidak ada.",
-  "description": "Halaman yang Anda coba akses mungkin telah dipindahkan, dihapus, atau Anda mungkin memasukkan URL yang salah.",
-  "backButton": "Kembali",
-  "homeButton": "Ke Beranda",
-  "countdownText": "Otomatis mengarahkan dalam {seconds} detik...",
-  "errorCode": "404"
-}

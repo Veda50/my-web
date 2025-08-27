@@ -1,0 +1,166 @@
+{
+  "title": "My Projects",
+  "subtitle": "A showcase of my development work and creative solutions",
+  "filters": {
+    "button": "Filters",
+    "techStack": "Tech Stack",
+    "category": "Category",
+    "availability": "Availability",
+    "clearFilters": "Clear Filters",
+    "searchPlaceholder": "Search projects..."
+  },
+  "categories": {
+    "development": "Development",
+    "production": "Production",
+    "private": "Private",
+    "archived": "Archived"
+  },
+  "availability": {
+    "github": "GitHub Available",
+    "live": "Live Demo Available",
+    "both": "Both Available"
+  },
+  "projectCard": {
+    "viewGithub": "View GitHub",
+    "viewLive": "Live Demo",
+    "techStack": "Tech Stack",
+    "category": "Category"
+  },
+  "noResults": {
+    "title": "No projects found",
+    "description": "Try adjusting your filters or search terms"
+  },
+  "stats": {
+    "totalProjects": "Total Projects",
+    "categories": "Categories",
+    "technologies": "Technologies"
+  },
+  "projects": [
+    {
+      "title": "Personal Portfolio Website",
+      "description": "A responsive, SEO-optimized portfolio built with Next.js and Tailwind CSS. Features include dark/light mode toggle, multi-language support, project showcase, blog section, and a contact form. Deployed on Vercel for fast global delivery.",
+      "imageSrc": "/img/projects/personal.gif",
+      "tags": ["Frontend", "Next.js", "Tailwind CSS", "SEO", "React", "Vercel"],
+      "liveDemoUrl": "https://veda-bezaleel.com",
+      "sourceCodeUrl": "https://github.com/veda50/portfolio",
+      "status": "prod"
+    },
+    {
+      "title": "Duolingo Clone Project",
+      "description": "A clone of Duolingo’s core lesson flow built with React and Redux, featuring interactive exercises, progress tracking, and responsive design.",
+      "imageSrc": "/img/projects/duolingo-clone.png",
+      "tags": ["Frontend", "React", "Redux", "Tailwind CSS"],
+      "liveDemoUrl": "https://duolingo-clone-phi.vercel.app",
+      "sourceCodeUrl": null,
+      "status": "dev"
+    },
+    {
+      "title": "Sparka Smart Parking System",
+      "description": "Built a Smart Parking System with role-based interfaces for users, admins, and operators. Frontend in Next.js, backend in Lumen PHP handling reservations and realtime updates. Deployed on GCP with Docker & Cloud Run.",
+      "imageSrc": "/img/projects/sparka.gif",
+      "tags": ["Fullstack", "Next.js", "Lumen PHP", "Docker", "GCP", "Cloud Run"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "priv"
+    },
+    {
+      "title": "Quire.my.id Job Search AI",
+      "description": "Building an AI-powered job search platform for Gemastik XVII. The prompt-based search feature is specifically designed for job seekers with disabilities, with separate repositories for each AI model.",
+      "imageSrc": "/img/projects/quire.gif",
+      "tags": ["Fullstack", "AI", "Next.js", "Lead", "Python", "OpenAI API"],
+      "liveDemoUrl": "https://www.quire.my.id/",
+      "sourceCodeUrl": null,
+      "status": "arch"
+    },
+    {
+      "title": "RAIHARC Community Website",
+      "description": "A one-page minimalist site for the Robotics Artificial Intelligence Hardware and Application Research Community (RAIHARC). Built with Next.js and Tailwind CSS, featuring smooth GSAP-powered scroll animations, responsive design, and clear calls-to-action to join the community. Deployed for fast global access.",
+      "imageSrc": "/img/projects/raiharc.png",
+      "tags": ["Frontend", "One-page", "Community", "Animation", "Next.js", "React", "Tailwind CSS", "GSAP", "TypeScript"],
+      "liveDemoUrl": "https://raiharc.org",
+      "sourceCodeUrl": null,
+      "status": "prod"
+    },
+    {
+      "title": "Remosto Recommendation System",
+      "description": "Created a responsive web platform with dynamic maps and AI-driven item recommendations using computer vision. Built RESTful API endpoints and conducted end-to-end testing with Cypress.",
+      "imageSrc": "/img/projects/remosto.png",
+      "tags": ["Frontend", "AI", "Cypress", "Next.js", "Tailwind CSS", "REST API"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "priv"
+    },
+    {
+      "title": "Telkomsel Internal Dashboard",
+      "description": "Built an internal KPI visualization dashboard for PT Telkomunikasi Seluler using Next.js and Python. Developed server-side components for efficient data querying and enhanced diagram readability for operations teams.",
+      "imageSrc": null,
+      "tags": ["Fullstack", "Next.js", "Python", "MySQL"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "priv"
+    },
+    {
+      "title": "Uphoria API CRUD",
+      "description": "Developed a maintainable backend with Laravel 9 and MySQL, leveraging Eloquent ORM for data modeling, implementing authentication & authorization, and organizing modular controllers for clean architecture.",
+      "imageSrc": "/img/projects/uphoria.png",
+      "tags": ["Backend", "Laravel", "MySQL", "Eloquent ORM", "JWT"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": "https://github.com/ariqfadli/Uphoria",
+      "status": "arch"
+    },
+    {
+      "title": "PeriGigi Web Enhancement",
+      "description": "Enhanced a private clinic website by adding payment pages and automated PDF invoice generation using React and Bootstrap. Collaborated with backend teams and contributed to a private Git repository via SSH.",
+      "imageSrc": null,
+      "tags": ["Frontend", "React", "Bootstrap", "Invoice", "PDF Generator"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "priv"
+    },
+    {
+      "title": "LoRa Realtime Monitoring",
+      "description": "Developed a realtime monitoring interface for LoRa-based smart lighting at PT Global Data Inspirasi. Integrated Flask REST API with MQTT pub/sub on the Antares platform, connecting physical IoT devices to the web UI.",
+      "imageSrc": null,
+      "tags": ["IoT", "Flask", "MQTT", "Antares", "WebSocket"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "arch"
+    },
+    {
+      "title": "Petaniku Web App",
+      "description": "A Laravel-based agriculture marketplace prototype built for Gemastik (UNNES). Featured product listings, user authentication, and basic transaction flows.",
+      "imageSrc": null,
+      "tags": ["Fullstack", "Laravel", "Marketplace", "Lead", "MySQL"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "arch"
+    },
+    {
+      "title": "Appstro API Service",
+      "description": "Built a RESTful API using Express.js and Firestore, implementing secure CRUD operations and data validation for a project management tool.",
+      "imageSrc": null,
+      "tags": ["Backend", "Express.js", "Firestore", "Node.js"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "priv"
+    },
+    {
+      "title": "PPAM Kes Survey Platform",
+      "description": "Developed a survey platform API with Fastify and PostgreSQL. Migrated legacy Excel data, designed secure endpoints, and deployed on a VPS with Nginx and SSL.",
+      "imageSrc": null,
+      "tags": ["Backend", "Fastify", "PostgreSQL", "Docker"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "dev"
+    },
+    {
+      "title": "Sunrise Project",
+      "description": "Implemented user-project and many-to-many relationships using GORM in Go, optimizing database schema and service layer for performance.",
+      "imageSrc": null,
+      "tags": ["Backend", "Go", "GORM", "PostgreSQL"],
+      "liveDemoUrl": null,
+      "sourceCodeUrl": null,
+      "status": "arch"
+    }
+  ]
+}

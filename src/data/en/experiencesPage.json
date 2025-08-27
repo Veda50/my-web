@@ -1,0 +1,106 @@
+{
+  "title": "Professional Experience",
+  "subtitle": "A comprehensive timeline of my career journey and professional growth",
+  "filterLabel": "Filter by Type:",
+  "filterOptions": {
+    "all": "All",
+    "fulltime": "Full-time",
+    "freelance": "Freelance",
+    "internship": "Internship",
+    "volunteer": "Volunteer",
+    "organization": "Organization",
+    "education": "Education"
+  },
+  "experiences": [
+    {
+      "period": "October 2024 - Present",
+      "role": "Frontend Developer",
+      "company": "PT Global Data Inspirasi",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Executed slicing of UI design components into high-fidelity, responsive React elements with pixel-perfect accuracy. Integrated APIs and collaborated with backend and design teams to deliver new features that improved performance and user engagement.",
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "Next.js"]
+    },
+    {
+      "period": "February 2024 - June 2024",
+      "role": "Software Developer",
+      "company": "PT Telekomunikasi Seluler",
+      "type": "internship",
+      "location": "Jakarta, Indonesia",
+      "description": "Built a session-based login system, implemented a daily in-memory cronjob for KPI ingestion, facilitated sprints as Scrum Master, and coordinated team workflows. Designed analytical dashboards and server-side data querying components to enhance visualization and system efficiency.",
+      "technologies": ["Node.js", "Express", "MySQL", "React", "Chart.js"]
+    },
+    {
+      "period": "December 2023 - January 2024",
+      "role": "Web Developer",
+      "company": "Nine Dragon Labs",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Enhanced an existing product by adding payment pages and an automated PDF invoice pipeline. Delivered React + Bootstrap components and integrated backend endpoints to streamline transaction flows.",
+      "technologies": ["React", "Bootstrap", "Node.js", "PDF.js"]
+    },
+    {
+      "period": "August 2023 - February 2024",
+      "role": "Software Developer",
+      "company": "PT Global Data Inspirasi",
+      "type": "internship",
+      "location": "Remote",
+      "description": "Resolved data mismatches between IoT devices and the web app using WebSocket and MQTT pub/sub. Built a RESTful API integrated with the Antares platform for realtime communication, and shipped a web-based monitoring interface.",
+      "technologies": ["Flask", "MQTT", "WebSocket", "Antares", "React"]
+    },
+    {
+      "period": "August 2023 - July 2024",
+      "role": "Event Organizer",
+      "company": "Google Developer Student Club Universitas Negeri Semarang",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Organized Info Session, Study Jam, and webinar programs; delivered a Backend Study Jam session; supported joint training with PTI Unnes; and volunteered at GDG Semarang DevFest events.",
+      "technologies": ["Community", "Event Ops", "Public Speaking", "Backend Workshop"]
+    },
+    {
+      "period": "February 2023 - February 2024",
+      "role": "Programming Staff",
+      "company": "Informatis Research and Creative Technology (I-SECRET)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Supported internal training routines and contributed to programming initiatives across the organization.",
+      "technologies": ["Training", "Mentoring", "Team Collaboration"]
+    },
+    {
+      "period": "December 2022 - December 2023",
+      "role": "Head of Mechanical Staff",
+      "company": "Robotic Student Club (KRSRI Division)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Led mechanical design efforts for competition robots, coordinated the team, and oversaw project planning and execution.",
+      "technologies": ["Mechanical Design", "CAD", "Leadership", "Project Planning"]
+    },
+    {
+      "period": "January 2022 - December 2022",
+      "role": "Mechanical Researcher",
+      "company": "Robotic Student Club (KRSRI Division)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Served as a core team member for the Indonesian Robot Contest, contributing to research and mechanical design.",
+      "technologies": ["Mechanical R&D", "Prototyping", "Teamwork"]
+    },
+    {
+      "period": "August 2021 - Present",
+      "role": "Informatics Engineering",
+      "company": "Universitas Negeri Semarang",
+      "type": "education",
+      "location": "Semarang, Indonesia",
+      "description": "Bachelor’s degree in Informatics Engineering (GPA 3.74/4.00). Relevant coursework: Algorithms & Programming, Operating Systems, Database Systems.",
+      "technologies": ["Algorithms", "OS", "Databases"]
+    },
+    {
+      "period": "July 2018 - May 2021",
+      "role": "Mathematics and Natural Sciences",
+      "company": "SMA Negeri 1 Bae",
+      "type": "education",
+      "location": "Indonesia",
+      "description": "Completed high school with a focus on Mathematics and Natural Sciences. Extracurricular informatics included learning HTML, CSS, and PHP.",
+      "technologies": ["HTML", "CSS", "PHP"]
+    }
+  ]
+}

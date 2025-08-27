@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Personal Portfolio Website",
+    "descEn": "A responsive, SEO-optimized portfolio built with Next.js and Tailwind CSS. Features include dark/light mode toggle, multi-language support, project showcase, blog section, and a contact form. Deployed on Vercel for fast global delivery.",
+    "descId": "Sebuah portfolio responsif dan SEO-optimized yang dibangun dengan Next.js dan Tailwind CSS. Fitur meliputi toggle dark/light mode, dukungan multi-bahasa, showcase project, bagian blog, dan contact form. Dideploy di Vercel untuk performa global yang cepat.",
+    "imageSrc": "/img/projects/personal.gif",
+    "tags": ["Frontend", "Next.js", "Tailwind CSS", "SEO", "React", "Vercel"],
+    "liveDemoUrl": "https://veda-bezaleel.com",
+    "sourceCodeUrl": "https://github.com/veda50/portfolio",
+    "status": "prod"
+  },
+  {
+    "title": "Duolingo Clone Project",
+    "descEn": "A clone of Duolingo’s core lesson flow built with React and Redux, featuring interactive exercises, progress tracking, and responsive design.",
+    "descId": "Clone Duolingo core lesson flow menggunakan React dan Redux, dengan interactive exercises, progress tracking, dan responsive design.",
+    "imageSrc": "/img/projects/duolingo-clone.png",
+    "tags": ["Frontend", "React", "Redux", "Tailwind CSS"],
+    "liveDemoUrl": "https://duolingo-clone-phi.vercel.app",
+    "sourceCodeUrl": null,
+    "status": "dev"
+  },
+  {
+    "title": "Sparka Smart Parking System",
+    "descEn": "Built a Smart Parking System with role-based interfaces for users, admins, and operators. Frontend in Next.js, backend in Lumen PHP handling reservations and realtime updates. Deployed on GCP with Docker & Cloud Run.",
+    "descId": "Membangun Smart Parking System dengan role-based interfaces untuk user, admin, dan operator. Frontend menggunakan Next.js, backend di Lumen PHP untuk reservations dan realtime updates. Dideploy di GCP dengan Docker & Cloud Run.",
+    "imageSrc": "/img/projects/sparka.gif",
+    "tags": ["Fullstack", "Next.js", "Lumen PHP", "Docker", "GCP", "Cloud Run"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "priv"
+  },
+  {
+    "title": "Quire.my.id Job Search AI",
+    "descEn": "Building an AI-powered job search platform for Gemastik XVII. The prompt-based search feature is specifically designed for job seekers with disabilities, with separate repositories for each AI model.",
+    "descId": "Membangun AI-powered job search platform untuk Gemastik XVII. Fitur prompt-based search dapat digunakan khusus untuk pencari kerja difabel, dengan repos terpisah untuk tiap AI model.",
+    "imageSrc": "/img/projects/quire.gif",
+    "tags": ["Fullstack", "AI", "Next.js", "Lead", "Python", "OpenAI API"],
+    "liveDemoUrl": "https://www.quire.my.id/",
+    "sourceCodeUrl": null,
+    "status": "arch"
+  },
+  {
+    "title": "RAIHARC Community Website",
+    "descEn": "A one-page minimalist site for the Robotics Artificial Intelligence Hardware and Application Research Community (RAIHARC). Built with Next.js and Tailwind CSS, featuring smooth GSAP-powered scroll animations, responsive design, and clear calls-to-action to join the community. Deployed for fast global access.",
+    "descId": "Situs one-page minimalis untuk Robotics Artificial Intelligence Hardware and Application Research Community (RAIHARC). Dibangun dengan Next.js dan Tailwind CSS, menampilkan animasi scroll halus berbasis GSAP, desain responsif, dan ajakan bergabung komunitas yang jelas. Dideploy untuk akses global yang cepat.",
+    "imageSrc": "/img/projects/raiharc.png",
+    "tags": ["Frontend", "One-page", "Community", "Animation", "Next.js", "React", "Tailwind CSS", "GSAP", "TypeScript"],
+    "liveDemoUrl": "https://raiharc.org",
+    "sourceCodeUrl": "",
+    "status": "prod"
+  },
+  {
+    "title": "Remosto Recommendation System",
+    "descEn": "Created a responsive web platform with dynamic maps and AI-driven item recommendations using computer vision. Built RESTful API endpoints and conducted end-to-end testing with Cypress.",
+    "descId": "Menciptakan responsive web platform dengan dynamic maps dan AI-driven item recommendations menggunakan computer vision. Membangun RESTful API endpoints dan melakukan end-to-end testing dengan Cypress.",
+    "imageSrc": "/img/projects/remosto.png",
+    "tags": ["Frontend", "AI", "Cypress", "Next.js", "Tailwind CSS", "REST API"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "priv"
+  },
+  {
+    "title": "Telkomsel Internal Dashboard",
+    "descEn": "Built an internal KPI visualization dashboard for PT Telkomunikasi Seluler using Next.js and Python. Developed server-side components for efficient data querying and enhanced diagram readability for operations teams.",
+    "descId": "Membangun internal KPI visualization dashboard untuk PT Telkomunikasi Seluler menggunakan Next.js dan Python. Mengembangkan server-side components untuk efficient data querying dan meningkatkan readability diagram bagi tim operasi.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Fullstack", "Next.js", "Python", "MySQL"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "priv"
+  },
+  {
+    "title": "Uphoria API CRUD",
+    "descEn": "Developed a maintainable backend with Laravel 9 and MySQL, leveraging Eloquent ORM for data modeling, implementing authentication & authorization, and organizing modular controllers for clean architecture.",
+    "descId": "Mengembangkan backend maintainable dengan Laravel 9 dan MySQL, memanfaatkan Eloquent ORM untuk data modeling, menerapkan authentication & authorization, serta mengorganisir modular controllers untuk clean architecture.",
+    "imageSrc": "/img/projects/uphoria.png",
+    "tags": ["Backend", "Laravel", "MySQL", "Eloquent ORM", "JWT"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": "https://github.com/ariqfadli/Uphoria",
+    "status": "arch"
+  },
+  {
+    "title": "PeriGigi Web Enhancement",
+    "descEn": "Enhanced a private clinic website by adding payment pages and automated PDF invoice generation using React and Bootstrap. Collaborated with backend teams and contributed to a private Git repository via SSH.",
+    "descId": "Enhance website klinik private dengan menambahkan payment pages dan automated PDF invoice generation menggunakan React dan Bootstrap. Bekerja sama dengan tim backend dan kontribusi ke private Git repo via SSH.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Frontend", "React", "Bootstrap", "Invoice", "PDF Generator"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "priv"
+  },
+  {
+    "title": "LoRa Realtime Monitoring",
+    "descEn": "Developed a realtime monitoring interface for LoRa-based smart lighting at PT Global Data Inspirasi. Integrated Flask REST API with MQTT pub/sub on the Antares platform, connecting physical IoT devices to the web UI.",
+    "descId": "Mengembangkan realtime monitoring interface untuk smart lighting berbasis LoRa di PT Global Data Inspirasi. Mengintegrasikan Flask REST API dengan MQTT pub/sub pada platform Antares, menghubungkan perangkat IoT fisik ke web UI.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["IoT", "Flask", "MQTT", "Antares", "WebSocket"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "arch"
+  },
+  {
+    "title": "Petaniku Web App",
+    "descEn": "A Laravel-based agriculture marketplace prototype built for Gemastik (UNNES). Featured product listings, user authentication, and basic transaction flows.",
+    "descId": "Prototype marketplace pertanian berbasis Laravel untuk Gemastik (UNNES). Menampilkan product listings, user authentication, dan basic transaction flows.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Fullstack", "Laravel", "Marketplace", "Lead", "MySQL"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "arch"
+  },
+  {
+    "title": "Appstro API Service",
+    "descEn": "Built a RESTful API using Express.js and Firestore, implementing secure CRUD operations and data validation for a project management tool.",
+    "descId": "Membangun RESTful API menggunakan Express.js dan Firestore, menerapkan secure CRUD operations dan data validation untuk project management tool.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Backend", "Express.js", "Firestore", "Node.js"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "priv"
+  },
+  {
+    "title": "PPAM Kes Survey Platform",
+    "descEn": "Developed a survey platform API with Fastify and PostgreSQL. Migrated legacy Excel data, designed secure endpoints, and deployed on a VPS with Nginx and SSL.",
+    "descId": "Membangun survey platform API dengan Fastify dan PostgreSQL. Migrasi legacy Excel data, mendesain secure endpoints, dan dideploy di VPS dengan Nginx & SSL.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Backend", "Fastify", "PostgreSQL", "Docker"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "dev"
+  },
+  {
+    "title": "Sunrise Project",
+    "descEn": "Implemented user-project and many-to-many relationships using GORM in Go, optimizing database schema and service layer for performance.",
+    "descId": "Mengimplementasikan user-project dan many-to-many relationships menggunakan GORM di Go, mengoptimalkan database schema dan service layer untuk performance.",
+    "imageSrc": "/img/projects/default.png",
+    "tags": ["Backend", "Go", "GORM", "PostgreSQL"],
+    "liveDemoUrl": null,
+    "sourceCodeUrl": null,
+    "status": "arch"
+  }
+]

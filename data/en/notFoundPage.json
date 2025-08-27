@@ -1,9 +1,0 @@
-{
-  "title": "404 - Page Not Found",
-  "subtitle": "Oops! The page you're looking for doesn't exist.",
-  "description": "The page you are trying to access may have been moved, deleted, or you may have entered an incorrect URL.",
-  "backButton": "Go Back",
-  "homeButton": "Go Home",
-  "countdownText": "Automatically redirecting in {seconds} seconds...",
-  "errorCode": "404"
-}

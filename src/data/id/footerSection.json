@@ -1,0 +1,26 @@
+{
+  "brand": {
+    "name": "VEDA BEZALEEL",
+    "tagline": "Full-stack developer yang membangun solusi web inovatif dengan teknologi modern dan problem-solving yang kreatif."
+  },
+  "description": "Full-stack developer yang membangun solusi web inovatif dengan teknologi modern dan problem-solving yang kreatif.",
+  "quickLinks": {
+    "title": "Tautan Cepat",
+    "items": [
+      { "label": "Tentang", "href": "#about" },
+      { "label": "Portofolio", "href": "#portfolio" },
+      { "label": "Perjalanan", "href": "#journey" },
+      { "label": "Kontak", "href": "#contact" }
+    ]
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "email": "hello@vedabezaleel.com",
+    "socials": {
+      "github": "https://github.com/veda50",
+      "linkedin": "https://linkedin.com/in/vedabezaleel",
+      "whatsapp": "https://wa.me/628812470248"
+    }
+  },
+  "copyright": "© 2025 Veda Bezaleel. Semua hak dilindungi. Dibangun dengan semangat untuk pengembangan web."
+}

@@ -1,0 +1,196 @@
+{
+    "hero": {
+      "name": "Veda Bezaleel",
+      "title": "Full Stack Developer",
+      "location": "Semarang, Id",
+      "headline": "Building Digital Experiences That Matter",
+      "subheadline": "I create modern, scalable web applications with clean code and intuitive user experiences. Let's bring your ideas to life.",
+      "stats": {
+        "projects": {
+          "value": 5,
+          "label": "Projects Completed"
+        },
+        "experience": {
+          "value": 1,
+          "label": "Years Experience"
+        }
+      },
+      "techStack": [
+        "TypeScript",
+        "Next.js",
+        "Prisma"
+      ],
+      "buttons": {
+        "viewWork": "View My Work",
+        "getInTouch": "Get In Touch"
+      },
+      "status": "Available for new projects"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "Passionate developer with a love for creating innovative solutions",
+      "skills": [
+        {
+          "title": "Pixel Perfectionist",
+          "category": "Frontend",
+          "description": "Focused on detailed slicing of design components with minimal tolerance to achieve pixel-perfect, responsive interfaces that mirror Figma designs.",
+          "technologies": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion"
+          ]
+        },
+        {
+          "title": "Logic Architect",
+          "category": "Backend Engineering",
+          "description": "Designs logical and optimized backend solutions to achieve peak performance under varying conditions using scalable architectures and efficient API integrations.",
+          "technologies": [
+            "Node.js",
+            "Python",
+            "PostgreSQL",
+            "MongoDB",
+            "Redis"
+          ]
+        },
+        {
+          "title": "Cloud Orchestrator",
+          "category": "Deployments & Ops",
+          "description": "Implements deployment strategies that balance high performance with cost efficiency, ensuring robust operations and smooth collaboration across tech teams.",
+          "technologies": [
+            "Git",
+            "Github",
+            "Google Cloud",
+            "Cloudflare"
+          ]
+        },
+        {
+          "title": "AI Explorer",
+          "category": "AI/ML",
+          "description": "Curious and proactive about AI developments. I learn fast, adapt quickly, and turn new capabilities into real product features — from prototype to production.",
+          "technologies": [
+            "OpenAI API",
+            "Vercel AI SDK",
+            "LangChain",
+            "Hugging Face",
+            "RAG / Embeddings",
+            "Vector DB (pgvector/Pinecone)"
+          ]
+        }
+      ]
+    },
+    "journey": {
+      "title": "My Journey",
+      "subtitle": "A timeline of my professional growth and achievements",
+      "otherLabel": "More experience",
+      "experiences": [
+        {
+          "role": "Fullstack Developer (Freelance)",
+          "company": "Datains | PT Global Data Inspirasi",
+          "location": "Remote",
+          "period": "Oct 2024 - Present",
+          "achievements": [
+            "Converted Figma designs into responsive, pixel-perfect UI components.",
+            "Collaborated closely with backend teams to integrate new features.",
+            "Delivered a full-stack Laravel–React app end-to-end, owning database through UI.",
+            "Designed REST APIs, auth, and domain logic in Laravel; integrated third-party services.",
+            "Built accessible React UIs."
+          ]
+        },
+        {
+          "role": "Software Developer (Internship)",
+          "company": "PT Telekomunikasi Seluler",
+          "location": "Semarang, Indonesia",
+          "period": "Feb 2024 - Jun 2024",
+          "achievements": [
+            "Built a session-based login feature to improve authentication and security.",
+            "Optimized backend processes with Next.js to improve system performance.",
+            "Co-designed and ran database scaling with data engineers.",
+            "Guided schema, indexing, and query design to balance performance, reliability, and cost.",
+            "Implemented observability and tuning—profiling, pooling, caching—to keep latency stable at scale.",
+            "Aligned team and stakeholders to turn requirements into a prioritized roadmap and sprints."
+          ]
+        },
+        {
+          "role": "Web Developer (Freelance)",
+          "company": "Nine Dragon Labs",
+          "location": "Remote",
+          "period": "Dec 2023 - Jan 2024",
+          "achievements": [
+            "Developed and integrated payment pages.",
+            "Implemented automated PDF invoice generation to streamline transactions.",
+            "Integrate new features with firestore db."
+          ]
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "A showcase of my recent work and projects",
+      "projects": [
+        {
+          "title": "Sparka Smart Parking System",
+          "category": "Web Development",
+          "description": "Built a Smart Parking System with role-based interfaces for users, admins, and operators. Frontend in Next.js, backend in Lumen PHP handling reservations and realtime updates. Deployed on GCP with Docker & Cloud Run.",
+          "image": "/img/projects/sparka.gif",
+          "technologies": ["Next.js", "Lumen PHP", "Docker", "GCP", "Cloud Run"],
+          "liveUrl": "#",
+          "githubUrl": "#"
+        },
+        {
+          "title": "Remosto Recommendation System",
+          "category": "Web Development",
+          "description": "Created a responsive web platform with maps and AI-driven item recommendations using computer vision. Built RESTful API endpoints and conducted end-to-end testing with Cypress.",
+          "image": "/img/projects/remosto.png",
+          "technologies": ["Cypress", "Next.js"],
+          "liveUrl": "#",
+          "githubUrl": "#"
+        },
+        {
+          "title": "LoRa Realtime Monitoring",
+          "category": "IoT & Web Development",
+          "description": "Developed a realtime monitoring interface for LoRa-based smart lighting at PT Global Data Inspirasi. Integrated Flask REST API with MQTT pub/sub on the Antares platform, connecting physical IoT devices to the web UI.",
+          "image": "/img/none.png",
+          "technologies": ["Flask", "MQTT", "Antares", "WebSocket"],
+          "liveUrl": "#",
+          "githubUrl": "#"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What clients and colleagues say about working with me",
+      "items": [
+        {
+          "content": "Alex delivered exceptional work on our e-commerce platform. His attention to detail and technical expertise exceeded our expectations. The project was completed on time and within budget.",
+          "author": "Sarah Chen",
+          "role": "Product Manager",
+          "company": "TechStart Inc.",
+          "avatar": "/professional-woman-headshot.png"
+        },
+        {
+          "content": "Working with Alex was a game-changer for our startup. He not only built our MVP but also provided valuable insights on scalability and user experience. Highly recommended!",
+          "author": "Michael Rodriguez",
+          "role": "CEO",
+          "company": "InnovateLab",
+          "avatar": "/professional-man-headshot.png"
+        },
+        {
+          "content": "Alex's full-stack expertise and problem-solving skills are outstanding. He transformed our complex requirements into an elegant, user-friendly application that our customers love.",
+          "author": "Emily Watson",
+          "role": "CTO",
+          "company": "DataFlow Solutions",
+          "avatar": "/creative-designer-headshot.png"
+        }
+      ]
+    },
+    "contacts": {
+      "title": "Let's Connect and Collaborate",
+      "subtitle": "Ready to bring your ideas to life? I'd love to hear about your project and explore how we can work together to create something amazing.",
+      "cta": {
+        "primary": "Send Message",
+        "secondary": "Schedule Call"
+      }
+    }
+  }

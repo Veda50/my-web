@@ -1,0 +1,12 @@
+{
+  "title": "Keahlian & Teknologi",
+  "subtitle": "Gambaran komprehensif tentang keahlian teknis dan tools yang saya gunakan",
+  "categories": {
+    "frontend": "Pengembangan Frontend",
+    "backend": "Pengembangan Backend",
+    "database": "Database & Penyimpanan",
+    "tools": "Tools Pengembangan",
+    "cloud": "Cloud & DevOps",
+    "mobile": "Pengembangan Mobile"
+  }
+}

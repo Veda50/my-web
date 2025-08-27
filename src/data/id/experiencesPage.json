@@ -1,0 +1,106 @@
+{
+  "title": "Pengalaman Profesional",
+  "subtitle": "Linimasa lengkap perjalanan karier dan perkembangan profesional saya",
+  "filterLabel": "Filter berdasarkan Tipe:",
+  "filterOptions": {
+    "all": "Semua",
+    "fulltime": "Purna Waktu",
+    "freelance": "Freelance",
+    "internship": "Magang",
+    "volunteer": "Sukarelawan",
+    "organization": "Organisasi",
+    "education": "Pendidikan"
+  },
+  "experiences": [
+    {
+      "period": "Oktober 2024 - Sekarang",
+      "role": "Frontend Developer",
+      "company": "PT Global Data Inspirasi",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Melakukan slicing komponen desain UI menjadi elemen React yang responsif dan presisi (pixel-perfect) dengan kinerja optimal. Mengintegrasikan data API secara mulus serta berkolaborasi dengan tim backend dan desain untuk menghadirkan fitur baru yang meningkatkan efisiensi sistem dan keterlibatan pengguna.",
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "Next.js"]
+    },
+    {
+      "period": "Februari 2024 - Juni 2024",
+      "role": "Software Developer",
+      "company": "PT Telekomunikasi Seluler",
+      "type": "internship",
+      "location": "Jakarta, Indonesia",
+      "description": "Membangun sistem login berbasis sesi, mengimplementasikan cronjob harian in-memory untuk pengambilan data KPI, berperan sebagai Scrum Master, dan mengoordinasikan alur kerja tim. Mendesain dashboard analitik dan komponen sisi server untuk kueri basis data guna meningkatkan visualisasi dan efisiensi sistem.",
+      "technologies": ["Node.js", "Express", "MySQL", "React", "Chart.js"]
+    },
+    {
+      "period": "Desember 2023 - Januari 2024",
+      "role": "Web Developer",
+      "company": "Nine Dragon Labs",
+      "type": "freelance",
+      "location": "Remote",
+      "description": "Menyempurnakan produk yang ada dengan menambahkan halaman pembayaran dan pipeline faktur PDF otomatis. Mengembangkan komponen React + Bootstrap dan mengintegrasikan endpoint backend untuk merampingkan alur transaksi.",
+      "technologies": ["React", "Bootstrap", "Node.js", "PDF.js"]
+    },
+    {
+      "period": "Agustus 2023 - Februari 2024",
+      "role": "Software Developer",
+      "company": "PT Global Data Inspirasi",
+      "type": "internship",
+      "location": "Remote",
+      "description": "Mengatasi ketidaksesuaian data antara perangkat IoT dan aplikasi web menggunakan WebSocket dan MQTT pub/sub. Membangun RESTful API yang terintegrasi dengan platform Antares untuk komunikasi real-time, serta membuat antarmuka pemantauan berbasis web.",
+      "technologies": ["Flask", "MQTT", "WebSocket", "Antares", "React"]
+    },
+    {
+      "period": "Agustus 2023 - Juli 2024",
+      "role": "Event Organizer",
+      "company": "Google Developer Student Club Universitas Negeri Semarang",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Menyelenggarakan Info Session, Study Jam, dan webinar; menjadi pemateri Backend Study Jam; mendukung pelatihan bersama PTI UNNES; serta menjadi relawan pada acara DevFest GDG Semarang.",
+      "technologies": ["Community", "Event Ops", "Public Speaking", "Backend Workshop"]
+    },
+    {
+      "period": "Februari 2023 - Februari 2024",
+      "role": "Programming Staff",
+      "company": "Informatis Research and Creative Technology (I-SECRET)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Mendukung rutinitas pelatihan internal dan berkontribusi pada inisiatif pemrograman di organisasi.",
+      "technologies": ["Training", "Mentoring", "Team Collaboration"]
+    },
+    {
+      "period": "Desember 2022 - Desember 2023",
+      "role": "Head of Mechanical Staff",
+      "company": "Robotic Student Club (KRSRI Division)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Memimpin perancangan mekanik untuk robot kompetisi, mengoordinasikan tim, serta mengawasi perencanaan dan eksekusi proyek.",
+      "technologies": ["Mechanical Design", "CAD", "Leadership", "Project Planning"]
+    },
+    {
+      "period": "Januari 2022 - Desember 2022",
+      "role": "Mechanical Researcher",
+      "company": "Robotic Student Club (KRSRI Division)",
+      "type": "organization",
+      "location": "Semarang, Indonesia",
+      "description": "Menjadi anggota inti tim pada Kontes Robot Indonesia, berkontribusi pada riset dan desain mekanik.",
+      "technologies": ["Mechanical R&D", "Prototyping", "Teamwork"]
+    },
+    {
+      "period": "Agustus 2021 - Sekarang",
+      "role": "Informatics Engineering",
+      "company": "Universitas Negeri Semarang",
+      "type": "education",
+      "location": "Semarang, Indonesia",
+      "description": "Program Sarjana (S1) Teknik Informatika (IPK 3,74/4,00). Mata kuliah relevan: Algoritma & Pemrograman, Sistem Operasi, Sistem Basis Data.",
+      "technologies": ["Algorithms", "OS", "Databases"]
+    },
+    {
+      "period": "Juli 2018 - Mei 2021",
+      "role": "Mathematics and Natural Sciences",
+      "company": "SMA Negeri 1 Bae",
+      "type": "education",
+      "location": "Indonesia",
+      "description": "Menyelesaikan pendidikan menengah dengan fokus Matematika dan Ilmu Pengetahuan Alam. Ekstrakurikuler informatika mencakup pembelajaran HTML, CSS, dan PHP.",
+      "technologies": ["HTML", "CSS", "PHP"]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "brand": {
+    "name": "VEDA BEZALEEL",
+    "tagline": "Full-stack developer crafting innovative web solutions with modern technologies and creative problem-solving."
+  },
+  "description": "Full-stack developer crafting innovative web solutions with modern technologies and creative problem-solving.",
+  "quickLinks": {
+    "title": "Quick Links",
+    "items": [
+      { "label": "About", "href": "#about" },
+      { "label": "Portfolio", "href": "#portfolio" },
+      { "label": "Journey", "href": "#journey" },
+      { "label": "Contact", "href": "#contact" }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "email": "hello@vedabezaleel.com",
+    "socials": {
+      "github": "https://github.com/veda50",
+      "linkedin": "https://linkedin.com/in/vedabezaleel",
+      "whatsapp": "https://wa.me/6281234567890"
+    }
+  },
+  "copyright": "© 2025 Veda Bezaleel. All rights reserved. Built with passion for web development."
+}
