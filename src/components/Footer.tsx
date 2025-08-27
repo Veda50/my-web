@@ -25,7 +25,10 @@ export default function Footer() {
   const { language } = useLanguage();
 
   const footerData: FooterData = useMemo(
-    () => (language === "id" ? (idFooter as FooterData) : (enFooter as FooterData)) ?? (enFooter as FooterData),
+    () =>
+      (language === "id"
+        ? (idFooter as FooterData)
+        : (enFooter as FooterData)) ?? (enFooter as FooterData),
     [language]
   );
 
@@ -37,50 +40,53 @@ export default function Footer() {
     footerData.description ??
     "Full-stack developer crafting innovative web solutions with modern technologies and creative problem-solving.";
 
-  const quickLinks =
-    footerData.quickLinks?.items ??
-    [
-      { label: language === "id" ? "Tentang" : "About", href: "#about" },
-      { label: language === "id" ? "Portofolio" : "Portfolio", href: "#portfolio" },
-      { label: language === "id" ? "Perjalanan" : "Journey", href: "#journey" },
-      { label: language === "id" ? "Kontak" : "Contact", href: "#contact" },
-    ];
+  const quickLinks = footerData.quickLinks?.items ?? [
+    { label: language === "id" ? "Tentang" : "About", href: "/" },
+    {
+      label: language === "id" ? "Portofolio" : "Portfolio",
+      href: "/my-work/projects",
+    },
+    { label: language === "id" ? "Perjalanan" : "Journey", href: "/about/experiences" },
+    { label: language === "id" ? "Kontak" : "Contact", href: "/" },
+  ];
 
-  const quickLinksTitle = footerData.quickLinks?.title ?? (language === "id" ? "Tautan Cepat" : "Quick Links");
+  const quickLinksTitle =
+    footerData.quickLinks?.title ??
+    (language === "id" ? "Tautan Cepat" : "Quick Links");
 
-  const contactTitle = footerData.contact?.title ?? (language === "id" ? "Hubungi Saya" : "Get In Touch");
+  const contactTitle =
+    footerData.contact?.title ??
+    (language === "id" ? "Hubungi Saya" : "Get In Touch");
   const email = footerData.contact?.email ?? "vedabezaleel@gmail.com";
   const socials = footerData.contact?.socials ?? {};
 
   const computedCopyright =
     footerData.copyright ??
     (language === "id"
-      ? `© ${year ?? ""} ${brandName}. Semua hak dilindungi. Dibangun dengan semangat untuk pengembangan web.`
-      : `© ${year ?? ""} ${brandName}. All rights reserved. Built with passion for web development.`);
+      ? `© ${
+          year ?? ""
+        } ${brandName}. Semua hak dilindungi. Dibangun dengan semangat untuk pengembangan web.`
+      : `© ${
+          year ?? ""
+        } ${brandName}. All rights reserved. Built with passion for web development.`);
 
-  const isInternal = (href: string) => href.startsWith("#") || href.startsWith("/");
+  const isInternal = (href: string) =>
+    href.startsWith("#") || href.startsWith("/");
 
   return (
-    <footer
-      className="
-        relative overflow-hidden
-        py-12
-        bg-background
-        text-foreground
-      "
-    >
-      {/* decorative blobs */}
+    <footer className="bg-foreground text-background dark:bg-background dark:text-foreground py-12 relative overflow-hidden">
+      {/* dekorasi */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-4 right-8 w-20 h-20 bg-primary/10 rounded-full" />
-        <div className="absolute bottom-4 left-12 w-16 h-16 bg-accent/10 rotate-45" />
+        <div className="absolute bottom-4 left-12 w-16 h-16 bg-orange-500/10 rotate-45" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-3xl font-sans font-black mb-3">{brandName}</h3>
-            <p className="text-muted-foreground leading-relaxed font-serif">
+            <h3 className="text-3xl font-sans font-black mb-4">{brandName}</h3>
+            <p className="text-gray-200/80 leading-relaxed font-serif">
               {description}
             </p>
           </div>
@@ -94,7 +100,7 @@ export default function Footer() {
                   {isInternal(link.href) ? (
                     <Link
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-gray-200/80 hover:text-blue-300 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -103,7 +109,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-gray-200/80 hover:text-blue-300 transition-colors"
                     >
                       {link.label}
                     </a>
@@ -116,12 +122,12 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-bold mb-4 font-sans">{contactTitle}</h4>
-            <div className="space-y-2 text-muted-foreground font-serif">
+            <div className="space-y-2 text-gray-200/80 font-serif">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-foreground/80" />
+                <Mail className="w-4 h-4" />
                 <a
                   href={`mailto:${email}`}
-                  className="hover:text-primary transition-colors underline-offset-4 hover:underline"
+                  className="hover:text-blue-300 transition-colors underline-offset-4 hover:underline"
                 >
                   {email}
                 </a>
@@ -133,7 +139,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiGithub className="w-5 h-5" />
                   </a>
@@ -144,7 +150,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiLinkedin className="w-5 h-5" />
                   </a>
@@ -155,7 +161,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiWhatsapp className="w-5 h-5" />
                   </a>
@@ -165,11 +171,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider + copyright */}
-        <div className="border-t border-border pt-8 text-center font-serif">
-          <p className="text-muted-foreground" suppressHydrationWarning>
-            {computedCopyright}
-          </p>
+        <div className="border-t border-background/20 pt-8 text-center text-background/60 font-serif">
+          <p suppressHydrationWarning>{computedCopyright}</p>
         </div>
       </div>
     </footer>
