@@ -71,7 +71,6 @@ export default function About() {
                 key={index}
                 className={`group relative bg-gradient-to-br ${colorScheme.bg} rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border ${colorScheme.border}`}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/30 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-6">
                     <div className="w-16 h-16 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
