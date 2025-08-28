@@ -77,7 +77,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* Stats + Mobile toggle */}
-        <div className="flex items-center justify-between mb-8 p-4 rounded-lg bg-muted/30">
+        <div className="flex items-center justify-between mb-8 p-4 rounded-lg">
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <span>
               <strong className="text-foreground">{list.length}</strong> {ui.stats.totalProjects}

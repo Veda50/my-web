@@ -47,7 +47,11 @@ export function ProjectsFiltersSidebar({
       className={`
         ${open ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
         fixed md:relative top-0 left-0 z-50 md:z-auto
-        w-80 md:w-72 h-full md:h-auto
+        w-80 md:w-72
+        /* ⬇️ penting: drawer mobile full viewport + bisa scroll */
+        h-[100dvh] md:h-auto
+        overflow-y-auto md:overflow-visible
+        overscroll-contain
         bg-background md:bg-transparent
         border-r md:border-r-0 border-border
         p-6 transition-transform duration-300
@@ -61,7 +65,7 @@ export function ProjectsFiltersSidebar({
         </button>
       </div>
 
-      {/* Full-height card container (no inner scroll; biar halaman yang scroll) */}
+      {/* Card container */}
       <Card className="md:sticky md:top-24">
         <CardContent className="p-6 space-y-8">
           {/* Status */}
@@ -115,7 +119,7 @@ export function ProjectsFiltersSidebar({
             </div>
           </section>
 
-          {/* Tags (ganti label → “Tags”, tampil semua tanpa scroll) */}
+          {/* Tags */}
           <section>
             <h4 className="font-semibold mb-3">Tags</h4>
             <div className="flex flex-wrap gap-2">
