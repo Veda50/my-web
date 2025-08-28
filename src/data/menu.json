@@ -32,10 +32,6 @@
       {
         "title": "Blogs",
         "route": "/my-work/blogs"
-      },
-      {
-        "title": "Code Snippets",
-        "route": "/my-work/snippets"
       }
     ]
   },
