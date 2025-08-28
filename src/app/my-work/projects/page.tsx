@@ -130,7 +130,6 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Show action icons always on touch devices (no-hover) */}
       <style jsx global>{`
         @media (hover: none) {
           .card-actions {
