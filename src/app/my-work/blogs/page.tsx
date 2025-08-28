@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
+import UnfinishedNotice from "@/components/UnfinishedNotice"
 
 export default function BlogPage() {
   const { t } = useLanguage()
@@ -51,6 +52,8 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-[var(--blog-background)] py-12 px-4">
+      <UnfinishedNotice />
+
       <div className="max-w-6xl mx-auto">
         {/* Search and Filters */}
         <div className="mb-8 space-y-6">
