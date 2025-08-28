@@ -5,10 +5,9 @@ const userPublicSelect = {
   clerkId: true,
   clerkName: true,
   clerkProfileUrl: true,
-  role: true, // boleh diabaikan oleh tipe manual
+  role: true,
 };
 
-/* ==================== LIST ==================== */
 export async function listThreads(): Promise<ThreadListType[]> {
   const rows = await prisma.thread.findMany({
     where: { isActive: true },
@@ -37,6 +36,34 @@ export async function listThreads(): Promise<ThreadListType[]> {
     category: r.category,
     viewsCount: r.viewsCount ?? 0,
   }));
+}
+
+type ListWithBodyRow = {
+  id: number;
+  title: string;
+  body: string;
+  createdAt: Date;
+  category: "FEATURES" | "BUGS" | "GENERAL" | "FEEDBACK";
+  viewsCount: number;
+  User: { clerkId: string; clerkName: string | null; clerkProfileUrl: string | null } | null;
+  _count: { Reply: number };
+};
+
+export async function listThreadsWithBody(): Promise<ListWithBodyRow[]> {
+  return prisma.thread.findMany({
+    where: { isActive: true },
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      body: true,
+      createdAt: true,
+      category: true,
+      viewsCount: true,
+      User: { select: userPublicSelect },
+      _count: { select: { Reply: true } },
+    },
+  }) as unknown as ListWithBodyRow[];
 }
 
 /* ==================== DETAIL ==================== */
