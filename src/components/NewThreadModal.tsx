@@ -1,138 +1,157 @@
-"use client"
+"use client";
 
-import type React from "react"
+import * as React from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useUser, SignInButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Plus } from "lucide-react";
+import { createThread } from "@/actions/feedback";
 
-import { useState } from "react"
-import { useLanguage } from "@/contexts/LanguageContext"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
-import { Plus } from "lucide-react"
+type Props = {
+  onThreadCreated?: (id: number) => void;
+};
 
-interface NewThreadModalProps {
-  onThreadCreated?: (thread: any) => void
-}
+const CATEGORIES = [
+  { value: "GENERAL", label: "General" },
+  { value: "FEATURES", label: "Features" },
+  { value: "BUGS", label: "Bugs" },
+  { value: "FEEDBACK", label: "Feedback" },
+] as const;
 
-export default function NewThreadModal({ onThreadCreated }: NewThreadModalProps) {
-  const { t } = useLanguage()
-  const feedbackData = t("feedbackPage")
+export default function NewThreadModal({ onThreadCreated }: Props) {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    title: "",
-    category: "",
-    content: "",
-  })
+  const [open, setOpen] = React.useState(false);
+  const [title, setTitle] = React.useState("");
+  const [category, setCategory] = React.useState<"GENERAL" | "FEATURES" | "BUGS" | "FEEDBACK">("GENERAL");
+  const [body, setBody] = React.useState("");
+  const [pending, startTransition] = React.useTransition();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!formData.title.trim() || !formData.category || !formData.content.trim()) return
+  const resetForm = () => {
+    setTitle("");
+    setBody("");
+    setCategory("GENERAL");
+  };
 
-    setIsSubmitting(true)
+  const submit = () =>
+    startTransition(async () => {
+      try {
+        if (!title.trim() || !body.trim()) return;
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+        const created = await createThread({ title: title.trim(), body: body.trim(), category });
 
-    // Create new thread object
-    const newThread = {
-      id: Date.now().toString(),
-      title: formData.title,
-      content: formData.content,
-      author: {
-        name: "Current User", // This would come from auth context
-        avatar: "/placeholder.svg",
-        initials: "CU",
-      },
-      category: formData.category,
-      replies: 0,
-      views: 1,
-      likes: 0,
-      createdAt: new Date().toISOString(),
-      lastActivity: new Date().toISOString(),
-      isPopular: false,
-    }
+        setOpen(false);
+        resetForm();
 
-    onThreadCreated?.(newThread)
+        if (created?.id) {
+          onThreadCreated?.(created.id);
+          router.push(`/feedback/${created.id}`);   // ⬅️ langsung ke detail
+          return;
+        }
 
-    // Reset form
-    setFormData({ title: "", category: "", content: "" })
-    setIsSubmitting(false)
-    setIsOpen(false)
-  }
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+        // Fallback: paksa refresh list dengan query param agar “routing key” berubah
+        if (pathname === "/feedback") {
+          router.push(`/feedback?refresh=${Date.now()}`);
+        } else {
+          router.refresh();
+        }
+      } catch (e: any) {
+        alert(e?.message ?? "Gagal membuat thread");
+      }
+    });
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button className="bg-primary hover:bg-primary/90">
-          <Plus className="h-4 w-4 mr-2" />
-          {feedbackData.newThreadButton}
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+    <Dialog open={open} onOpenChange={setOpen}>
+      {isSignedIn ? (
+        <DialogTrigger asChild>
+          <Button className="h-10 bg-blue-600 hover:bg-blue-600/90 text-white">
+            <Plus className="h-4 w-4 mr-2" />
+            New Thread
+          </Button>
+        </DialogTrigger>
+      ) : (
+        <SignInButton mode="modal">
+          <Button variant="outline" className="h-10">
+            <Plus className="h-4 w-4 mr-2" />
+            Sign in to Post
+          </Button>
+        </SignInButton>
+      )}
+
+      <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>{feedbackData.newThread.title}</DialogTitle>
+          <DialogTitle>Buat Thread Baru</DialogTitle>
+          <DialogDescription>Bagikan ide, laporan bug, atau feedback kamu.</DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-6">
+
+        <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="nt-title">Judul</Label>
             <Input
-              id="title"
-              placeholder={feedbackData.newThread.titlePlaceholder}
-              value={formData.title}
-              onChange={(e) => handleInputChange("title", e.target.value)}
-              required
+              id="nt-title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Contoh: Dark mode toggle di navbar"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="category">{feedbackData.newThread.categoryLabel}</Label>
-            <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)} required>
+            <Label>Kategori</Label>
+            <Select value={category} onValueChange={(v) => setCategory(v as any)}>
               <SelectTrigger>
-                <SelectValue placeholder="Select a category" />
+                <SelectValue placeholder="Pilih kategori" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="feedback">{feedbackData.categories.feedback}</SelectItem>
-                <SelectItem value="bugs">{feedbackData.categories.bugs}</SelectItem>
-                <SelectItem value="features">{feedbackData.categories.features}</SelectItem>
-                <SelectItem value="general">{feedbackData.categories.general}</SelectItem>
+                {CATEGORIES.map((c) => (
+                  <SelectItem key={c.value} value={c.value}>
+                    {c.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="content">Content</Label>
+            <Label htmlFor="nt-body">Konten</Label>
             <Textarea
-              id="content"
-              placeholder={feedbackData.newThread.contentPlaceholder}
-              value={formData.content}
-              onChange={(e) => handleInputChange("content", e.target.value)}
-              className="min-h-[150px]"
-              required
+              id="nt-body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              placeholder="Tulis detail ide/bug/feedback kamu…"
+              className="min-h-[140px]"
             />
           </div>
+        </div>
 
-          <div className="flex justify-end gap-3">
-            <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
-              {feedbackData.newThread.cancelButton}
-            </Button>
-            <Button
-              type="submit"
-              disabled={!formData.title.trim() || !formData.category || !formData.content.trim() || isSubmitting}
-              className="bg-primary hover:bg-primary/90"
-            >
-              {isSubmitting ? "Posting..." : feedbackData.newThread.submitButton}
-            </Button>
-          </div>
-        </form>
+        <DialogFooter className="gap-2">
+          <DialogClose asChild>
+            <Button variant="outline">Batal</Button>
+          </DialogClose>
+          <Button
+            onClick={submit}
+            disabled={pending || !title.trim() || !body.trim()}
+            className="bg-blue-600 hover:bg-blue-600/90 text-white"
+          >
+            {pending ? "Menyimpan…" : "Publikasikan"}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

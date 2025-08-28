@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -13,11 +14,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // ----- state untuk sidebar & scroll spy -----
   const [activeSection, setActiveSection] = useState("hero");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // theme & language dari context
   const { isDarkMode, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
 
@@ -54,34 +53,43 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={`min-h-screen ${
-        isDarkMode ? "bg-slate-900 text-white" : "bg-gradient-to-br from-slate-50 to-slate-100"
+        isDarkMode
+          ? "bg-slate-900 text-white"
+          : "bg-gradient-to-br from-slate-50 to-slate-100"
       }`}
     >
       {/* Preloader akan remount setiap pathname berubah */}
       <Preloader key={pathname} />
 
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <ClerkProvider>
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        activeSection={activeSection}
-        isDarkMode={isDarkMode}
-        setIsDarkMode={(dark) => setTheme(dark ? "dark" : "light")}
-        language={language === "en" ? "EN" : "ID"}
-        setLanguage={(lang) => setLanguage(lang === "EN" ? "en" : "id")}
-        scrollToSection={scrollToSection}
-      />
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          activeSection={activeSection}
+          isDarkMode={isDarkMode}
+          setIsDarkMode={(dark) => setTheme(dark ? "dark" : "light")}
+          language={language === "en" ? "EN" : "ID"}
+          setLanguage={(lang) => setLanguage(lang === "EN" ? "en" : "id")}
+          scrollToSection={scrollToSection}
+        />
 
-      <main className="pt-20">{children}</main>
-
+        <main className="pt-20">{children}</main>
+      </ClerkProvider>
       {/* Global keyframes yang sebelumnya ada di page */}
       <style jsx global>{`
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
-        .animate-marquee { animation: marquee 20s linear infinite; }
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
       `}</style>
     </div>
   );
