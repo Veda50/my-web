@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "content": "Sangat baik dalam koordinasi sebagai team member, memiliki semangat tinggi untuk berkembang.",
+      "author": "I Gede Ngurah Yudi Saputra",
+      "role": "Engineer Network Operation",
+      "company": "Managed Veda directly",
+      "avatar": "/img/testimonials/bli-yudi.jpeg"
+    },
+    {
+      "content": "Veda is exceptionally ambitious, with an insatiable desire to master everything in the field of computer science. He’s not only eager to learn and grow but also excels as both a team leader and a team player. It was a pleasure working with him, and I would welcome the opportunity to collaborate with him again.",
+      "author": "Muhammad Dylan Hikma Sanjaya",
+      "role": "Software Developer",
+      "company": "Worked at the same team",
+      "avatar": "/img/testimonials/dylan.jpeg"
+    }
+  ]
+}

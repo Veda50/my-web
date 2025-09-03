@@ -160,30 +160,7 @@
     },
     "testimonials": {
       "title": "Testimonials",
-      "subtitle": "What clients and colleagues say about working with me",
-      "items": [
-        {
-          "content": "Veda delivered exceptional work on our e-commerce platform. His attention to detail and technical expertise exceeded our expectations. The project was completed on time and within budget.",
-          "author": "Sarah Chen",
-          "role": "Product Manager",
-          "company": "TechStart Inc.",
-          "avatar": "/professional-woman-headshot.png"
-        },
-        {
-          "content": "Working with Veda was a game-changer for our startup. He not only built our MVP but also provided valuable insights on scalability and user experience. Highly recommended!",
-          "author": "Michael Rodriguez",
-          "role": "CEO",
-          "company": "InnovateLab",
-          "avatar": "/professional-man-headshot.png"
-        },
-        {
-          "content": "Veda's full-stack expertise and problem-solving skills are outstanding. He transformed our complex requirements into an elegant, user-friendly application that our customers love.",
-          "author": "Emily Watson",
-          "role": "CTO",
-          "company": "DataFlow Solutions",
-          "avatar": "/creative-designer-headshot.png"
-        }
-      ]
+      "subtitle": "What clients and colleagues say about working with me"
     },
     "contacts": {
       "title": "Let's Connect and Collaborate",
