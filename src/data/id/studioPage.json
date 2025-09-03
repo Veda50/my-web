@@ -10,66 +10,17 @@
     "noResults": "Tidak ada alat ditemukan"
   },
   "categories": {
-    "all": "Semua Alat",
-    "development": "Pengembangan",
-    "design": "Desain",
-    "productivity": "Produktivitas",
-    "utilities": "Utilitas"
+    "web": "Web",
+    "ai": "Kecerdasan Buatan"
   },
   "tools": [
     {
-      "id": "vscode",
-      "name": "Visual Studio Code",
-      "description": "Editor kode dengan fitur canggih",
-      "category": "development",
-      "icon": "code",
-      "url": "https://code.visualstudio.com",
+      "id": "phishing",
+      "name": "phishing Checker",
+      "description": "Sistem deteksi phishing berbasis kecerdasan buatan",
+      "category": "ai",
+      "url": "https://phish.vedabe.com",
       "color": "#007ACC"
-    },
-    {
-      "id": "figma",
-      "name": "Figma",
-      "description": "Platform desain kolaboratif",
-      "category": "design",
-      "icon": "palette",
-      "url": "https://figma.com",
-      "color": "#F24E1E"
-    },
-    {
-      "id": "github",
-      "name": "GitHub",
-      "description": "Kontrol versi dan kolaborasi",
-      "category": "development",
-      "icon": "github",
-      "url": "https://github.com",
-      "color": "#181717"
-    },
-    {
-      "id": "notion",
-      "name": "Notion",
-      "description": "Ruang kerja all-in-one",
-      "category": "productivity",
-      "icon": "notebook",
-      "url": "https://notion.so",
-      "color": "#000000"
-    },
-    {
-      "id": "vercel",
-      "name": "Vercel",
-      "description": "Deploy dan host aplikasi",
-      "category": "development",
-      "icon": "cloud",
-      "url": "https://vercel.com",
-      "color": "#000000"
-    },
-    {
-      "id": "postman",
-      "name": "Postman",
-      "description": "Platform pengembangan API",
-      "category": "development",
-      "icon": "api",
-      "url": "https://postman.com",
-      "color": "#FF6C37"
     }
   ],
   "stats": {
