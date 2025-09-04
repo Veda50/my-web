@@ -12,7 +12,7 @@ type Testimonial = {
   content: string
   author: string
   role?: string
-  company?: string
+  title?: string
   avatar?: string
 }
 
@@ -87,7 +87,7 @@ export default function Testimonials({
                       <div>
                         <h4 className="font-semibold text-foreground">{it.author}</h4>
                         {it.role && <p className="text-sm text-muted-foreground">{it.role}</p>}
-                        {it.company && <p className="text-xs text-muted-foreground/80">{it.company}</p>}
+                        {it.title && <p className="text-xs text-muted-foreground/80">{it.title}</p>}
                       </div>
                     </div>
 
@@ -122,7 +122,7 @@ export default function Testimonials({
                     <div>
                       <h4 className="font-semibold text-foreground">{it.author}</h4>
                       {it.role && <p className="text-sm text-muted-foreground">{it.role}</p>}
-                      {it.company && <p className="text-xs text-muted-foreground/80">{it.company}</p>}
+                      {it.title && <p className="text-xs text-muted-foreground/80">{it.title}</p>}
                     </div>
                   </div>
 

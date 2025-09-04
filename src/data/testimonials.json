@@ -3,16 +3,23 @@
     {
       "content": "Sangat baik dalam koordinasi sebagai team member, memiliki semangat tinggi untuk berkembang.",
       "author": "I Gede Ngurah Yudi Saputra",
-      "role": "Engineer Network Operation",
-      "company": "Managed Veda directly",
+      "role": "Engineer Network Operation at Telkomsel",
+      "title": "Managed Veda directly",
       "avatar": "/img/testimonials/bli-yudi.jpeg"
     },
     {
       "content": "Veda is exceptionally ambitious, with an insatiable desire to master everything in the field of computer science. He’s not only eager to learn and grow but also excels as both a team leader and a team player. It was a pleasure working with him, and I would welcome the opportunity to collaborate with him again.",
       "author": "Muhammad Dylan Hikma Sanjaya",
-      "role": "Software Developer",
-      "company": "Worked at the same team",
+      "role": "Software Developer | 2024 IISMA Awardee to University of Szeged",
+      "title": "Worked at the same team",
       "avatar": "/img/testimonials/dylan.jpeg"
+    },
+    {
+      "content": "Veda is one of the most authentic web enthusiasts I've ever met. He is always curiosity about new frameworks and technologies. He is a proactive, collaborative, and highly motivated individual who would be a tremendous asset to any web development team — highly recommended!",
+      "author": "Faris Faikar Razannafi",
+      "role": "Fullstack Engineer at Speakology Ai, US",
+      "title": "Worked at the same team",
+      "avatar": "/img/testimonials/faris.png"
     }
   ]
 }
