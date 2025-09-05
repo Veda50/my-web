@@ -5,8 +5,6 @@ import { useState, useEffect } from "react"
 import {
   Code2,
   Database,
-  Cloud,
-  Smartphone,
   ChevronDown,
   Download,
   ExternalLink,
@@ -19,6 +17,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
 import LocalTime from "../LocalTime"
+import projectPageData from "@/data/en/projectsPage.json"
 
 interface HeroProps {
   isVisible: boolean
@@ -37,6 +36,8 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
   }, [])
 
   const data = language === 'en' ? enLanding.hero : idLanding.hero
+  const totalProject: number = projectPageData.projects.length + 1;
+  const totalExperiences: number = new Date().getFullYear() - 2023;
 
   return (
     <section
@@ -53,7 +54,7 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
           >
             <div className="relative bg-card dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-border dark:border-slate-700 card-hover-lift">
               <div className="absolute -top-2 -right-2 gentle-float">
-                <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center">
                   <Sparkles className="w-3 h-3 text-accent-foreground" />
                 </div>
               </div>
@@ -99,16 +100,16 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
 
                 <div className="grid grid-cols-2 gap-3 pt-3 border-t border-border">
                   <div className="text-center">
-                    <div className="text-lg font-bold text-orange-500">
-                      {data.stats.projects.value}+
+                    <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                      {totalProject}+
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {data.stats.projects.label}
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-lg font-bold text-orange-500">
-                      {data.stats.experience.value}+
+                    <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                      {totalExperiences}+
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {data.stats.experience.label}
@@ -117,9 +118,9 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
                 </div>
 
                 {/* Status */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-500/10 rounded-full">
-                  <Users className="w-3 h-3 text-orange-500" />
-                  <span className="text-xs text-orange-500">{data.status}</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 rounded-full">
+                  <Users className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                  <span className="text-xs text-blue-600 dark:text-blue-400">{data.status}</span>
                 </div>
               </div>
             </div>
