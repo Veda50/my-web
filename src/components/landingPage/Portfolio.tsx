@@ -162,20 +162,22 @@ export default function Portfolio() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            size="lg"
-            className="
+        <Link href="/my-work/projects">
+          <div className="text-center mt-12">
+            <Button
+              variant="outline"
+              size="lg"
+              className="
               border-border text-foreground bg-transparent
-              hover:bg-muted/40 
+              hover:bg-muted/40 cursor-pointer
             "
-            onClick={() => router.push('/my-work/projects')}
-          >
+              onClick={() => router.push("/my-work/projects")}
+            >
               {language === "id" ? "Lihat Semua Proyek" : "View All Projects"}
               <ExternalLink className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
+            </Button>
+          </div>
+        </Link>
       </div>
     </section>
   );
