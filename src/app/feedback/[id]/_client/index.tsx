@@ -165,6 +165,8 @@ export default function ThreadDetailClient({
   const [deleteThreadOpen, setDeleteThreadOpen] = useState(false);
   const [deleteReplyId, setDeleteReplyId] = useState<number | null>(null);
 
+  const {language} = useLanguage();
+
   // view counter (client-only)
   useEffect(() => {
     const lk = `tv:${threadId}:${todayKey()}`;
@@ -414,7 +416,7 @@ export default function ThreadDetailClient({
                   </div>
                 </div>
               ) : (
-                <div className="text-sm text-muted-foreground">Kamu perlu masuk untuk menulis balasan.</div>
+                <div className="text-sm text-muted-foreground">{language === 'en' ? "You need to log in to write a reply." : "Kamu perlu masuk untuk menulis balasan."}</div>
               )}
             </CardContent>
           </Card>

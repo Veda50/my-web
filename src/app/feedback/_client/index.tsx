@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type ThreadItem = {
   id: number;
@@ -57,6 +58,8 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
   const [selectedCategory, setSelectedCategory] = useState<"all" | ThreadItem["category"]>("all");
   const [sortBy, setSortBy] = useState<"latest" | "oldest" | "popular">("latest");
 
+  const {language} = useLanguage()
+
   // Hitung popular sekali (berdasarkan data awal)
   const popularIds = useMemo(() => {
     const sorted = [...initialThreads].sort((a, b) => {
@@ -103,7 +106,7 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">Feedback</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
-            Bagikan ide, laporan bug, atau saran untuk meningkatkan situs ini.
+            {language === "en" ? "Share ideas, report bugs, or give suggestions to improve this site." : "Bagikan ide, laporan bug, atau saran untuk meningkatkan situs ini."}
           </p>
         </div>
 
