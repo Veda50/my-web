@@ -24,35 +24,36 @@
       "viewWork": "Lihat Karya Saya",
       "getInTouch": "Hubungi Saya"
     },
-    "status": "Tersedia untuk proyek baru"
+    "status": "Terbuka untuk kolaborasi!"
   },
   "about": {
     "title": "Tentang Saya",
     "subtitle": "Pengembang yang antusias dengan kecintaan untuk menciptakan solusi inovatif",
+    "moreCTA": "Lihat",
     "skills": [
       {
         "title": "Perfeksionis Pixel",
         "category": "Frontend",
         "description": "Fokus pada slicing detail komponen desain dengan toleransi minimal untuk mencapai antarmuka yang responsif dan pixel-perfect yang setia pada desain Figma.",
-        "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
+        "technologies": ["TypeScript", "Next.js", "shadcn/ui"]
       },
       {
         "title": "Arsitek Logika",
         "category": "Rekayasa Backend",
         "description": "Merancang solusi backend yang logis dan optimal untuk kinerja puncak di berbagai kondisi dengan arsitektur yang dapat diskalakan dan integrasi API yang efisien.",
-        "technologies": ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis"]
+        "technologies": ["Laravel", "FastifyJs", "Prisma"]
       },
       {
         "title": "Orkestrator Cloud",
         "category": "Deployments & Ops",
         "description": "Menerapkan strategi deployment yang menyeimbangkan performa tinggi dan efisiensi biaya, memastikan operasi yang andal dan kolaborasi tim teknis yang mulus.",
-        "technologies": ["Git", "Github", "Google Cloud", "Cloudflare"]
+        "technologies": ["Docker", "Google Cloud", "Cloudflare"]
       },
       {
         "title": "AI Explorer",
         "category": "AI/ML",
         "description": "Saya terbuka dengan perkembangan AI, cepat beradaptasi, dan mampu mengimplementasikannya ke aplikasi nyata — dari prototipe hingga produksi.",
-        "technologies": ["OpenAI API", "Vercel AI SDK", "LangChain", "Hugging Face", "RAG / Embeddings", "Vector DB (pgvector/Pinecone)"]
+        "technologies": ["Python", "scikit-learn", "ONNX"]
       }
     ]
   },

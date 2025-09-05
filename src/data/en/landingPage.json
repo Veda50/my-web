@@ -24,59 +24,36 @@
         "viewWork": "View My Work",
         "getInTouch": "Get In Touch"
       },
-      "status": "Available for new projects"
+      "status": "Available for new collaboration!"
     },
     "about": {
       "title": "About Me",
       "subtitle": "Passionate developer with a love for creating innovative solutions",
+      "moreCTA": "More",
       "skills": [
         {
           "title": "Pixel Perfectionist",
           "category": "Frontend",
           "description": "Focused on detailed slicing of design components with minimal tolerance to achieve pixel-perfect, responsive interfaces that mirror Figma designs.",
-          "technologies": [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "Framer Motion"
-          ]
+          "technologies": ["TypeScript", "Next.js", "shadcn/ui"]
         },
         {
           "title": "Logic Architect",
           "category": "Backend Engineering",
           "description": "Designs logical and optimized backend solutions to achieve peak performance under varying conditions using scalable architectures and efficient API integrations.",
-          "technologies": [
-            "Node.js",
-            "Python",
-            "PostgreSQL",
-            "MongoDB",
-            "Redis"
-          ]
+          "technologies": ["Laravel", "FastifyJs", "Prisma"]
         },
         {
           "title": "Cloud Orchestrator",
           "category": "Deployments & Ops",
           "description": "Implements deployment strategies that balance high performance with cost efficiency, ensuring robust operations and smooth collaboration across tech teams.",
-          "technologies": [
-            "Git",
-            "Github",
-            "Google Cloud",
-            "Cloudflare"
-          ]
+          "technologies": ["Docker", "Google Cloud", "Cloudflare"]
         },
         {
           "title": "AI Explorer",
           "category": "AI/ML",
           "description": "Curious and proactive about AI developments. I learn fast, adapt quickly, and turn new capabilities into real product features — from prototype to production.",
-          "technologies": [
-            "OpenAI API",
-            "Vercel AI SDK",
-            "LangChain",
-            "Hugging Face",
-            "RAG / Embeddings",
-            "Vector DB (pgvector/Pinecone)"
-          ]
+          "technologies": ["Python", "scikit-learn", "ONNX"]
         }
       ]
     },

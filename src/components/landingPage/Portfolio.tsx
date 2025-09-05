@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { SiGithub } from "react-icons/si"
 
 export default function Portfolio() {
   const { language } = useLanguage()
@@ -100,14 +101,14 @@ export default function Portfolio() {
                             className="bg-primary text-primary-foreground hover:bg-primary/90"
                             asChild
                           >
-                            <a
+                            <Link
                               href={liveHref}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label="Live Demo"
                             >
                               <ExternalLink className="w-4 h-4" />
-                            </a>
+                            </Link>
                           </Button>
                         )}
                         {hasGit && (
@@ -117,14 +118,14 @@ export default function Portfolio() {
                             className="bg-background/90 text-foreground border-border hover:bg-background"
                             asChild
                           >
-                            <a
+                            <Link
                               href={gitHref}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label="GitHub Repo"
                             >
-                              <Github className="w-4 h-4" />
-                            </a>
+                              <SiGithub className="w-4 h-4" />
+                            </Link>
                           </Button>
                         )}
                       </div>

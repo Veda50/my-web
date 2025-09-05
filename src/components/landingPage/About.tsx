@@ -76,12 +76,18 @@ export default function About() {
                     <div className="w-16 h-16 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <span className="text-3xl">{emojis[index]}</span>
                     </div>
-                    <Badge className={`${colorScheme.badge} text-white hover:${colorScheme.badge}/90`}>
+                    <Badge
+                      className={`${colorScheme.badge} text-white hover:${colorScheme.badge}/90`}
+                    >
                       {skill.category}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">{skill.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">{skill.description}</p>
+                  <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                    {skill.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                    {skill.description}
+                  </p>
                   <div className="flex flex-wrap gap-2 items-center">
                     {skill.technologies.slice(0, 3).map((tech: string) => (
                       <span
@@ -91,20 +97,21 @@ export default function About() {
                         {tech}
                       </span>
                     ))}
-                    {skill.technologies.length > 3 && (
+
+                    <Link href="/about/skills">
                       <button
-                        className={`flex items-center px-2 py-1 ${colorScheme.hover} transition-colors group/more`}
+                        className={`flex items-center px-2 py-1 ${colorScheme.hover} hover:bg-white rounded-full cursor-pointer transition-colors group/more`}
                       >
                         <MoreHorizontal className="w-4 h-4" />
-                        <span className="text-xs ml-1 opacity-0 group-hover/more:opacity-100 transition-opacity">
-                          +{skill.technologies.length - 3} more
+                        <span className="text-xs ml-1 opacity-0 group-hover/more:opacity-100  transition-opacity">
+                          {data.moreCTA}
                         </span>
                       </button>
-                    )}
+                    </Link>
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>

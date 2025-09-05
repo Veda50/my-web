@@ -105,14 +105,14 @@ export default function Footer() {
                       {link.label}
                     </Link>
                   ) : (
-                    <a
+                    <Link
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-200/80 hover:text-blue-300 transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   )}
                 </li>
               ))}
@@ -125,16 +125,16 @@ export default function Footer() {
             <div className="space-y-2 text-gray-200/80 font-serif">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <a
+                <Link
                   href={`mailto:${email}`}
                   className="hover:text-blue-300 transition-colors underline-offset-4 hover:underline"
                 >
                   {email}
-                </a>
+                </Link>
               </div>
               <div className="flex gap-4 mt-4">
                 {socials.github && (
-                  <a
+                  <Link
                     href={socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -142,10 +142,10 @@ export default function Footer() {
                     className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiGithub className="w-5 h-5" />
-                  </a>
+                  </Link>
                 )}
                 {socials.linkedin && (
-                  <a
+                  <Link
                     href={socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -153,10 +153,10 @@ export default function Footer() {
                     className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiLinkedin className="w-5 h-5" />
-                  </a>
+                  </Link>
                 )}
                 {socials.whatsapp && (
-                  <a
+                  <Link
                     href={socials.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -164,7 +164,7 @@ export default function Footer() {
                     className="text-gray-200/80 hover:text-blue-300 transition-colors"
                   >
                     <SiWhatsapp className="w-5 h-5" />
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>

@@ -12,6 +12,7 @@ import { FaShieldAlt, FaRobot, FaCloud } from "react-icons/fa"        // FA5
 import { RiCodeSSlashLine, RiDatabase2Line } from "react-icons/ri"
 import { MdSecurity, MdOutlinePalette } from "react-icons/md"
 import { TbApi } from "react-icons/tb"
+import Link from "next/link"
 
 // Daftar ikon mengikuti urutan tools di JSON (tanpa prop icon)
 const ICONS: IconType[] = [
@@ -118,7 +119,7 @@ export default function StudioPage() {
             {filteredTools.map((tool: any, index: number) => {
               const Icon = getIconByToolId(tool.id)
               return (
-                <a
+                <Link
                   key={tool.id}
                   href={tool.url}
                   target="_blank"
@@ -161,7 +162,7 @@ export default function StudioPage() {
                       </Badge>
                     </div>
                   </div>
-                </a>
+                </Link>
               )
             })}
           </div>
