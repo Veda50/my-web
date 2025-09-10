@@ -32,25 +32,17 @@ import { validateUser } from "./user";
 import { z } from "zod";
 import { revalidateTag, revalidatePath } from "next/cache";
 
-/* ====================== CONSTANTS & HELPERS ====================== */
 // NOTE: jangan export const di file "use server"
 const THREADS_TAG = "threads:list" as const;
 const FEEDBACK_PATH = "/feedback" as const;
 
-/** Pastikan DI-AWAIT di tiap action supaya invalidasi selesai sebelum render berikutnya. */
 async function invalidateThreadsList() {
-  // 1) Bersihkan cache in-memory (hanya instance/proses ini)
   clearThreadListCache();
 
-  // 2) Revalidate Next cache by tag (semua instance)
   await revalidateTag(THREADS_TAG);
 
-  // 3) Paksa subtree /feedback re-render pada request berikutnya
-  //    (aman dipakai bersama tag; membantu kasus navigasi balik / client cache)
   await revalidatePath(FEEDBACK_PATH, "page");
 }
-
-/* ========================= READ ========================= */
 
 export const getAllThreads = async (): Promise<ThreadListType[]> => {
   if (!isThreadListCacheStale(cacheTtl)) {
@@ -64,8 +56,6 @@ export const getAllThreads = async (): Promise<ThreadListType[]> => {
 export const getThreadById = async (threadId: number): Promise<ThreadDetailType | null> => {
   return await findThreadById(threadId);
 };
-
-/* ======================= VALIDATORS ====================== */
 
 const ThreadCreateSchema = z.object({
   title: z.string().min(3, "Judul minimal 3 karakter").max(200, "Judul maksimal 200 karakter"),
@@ -88,7 +78,6 @@ const ReplyEditSchema = z.object({
   body: z.string().min(1, "Balasan tidak boleh kosong"),
 });
 
-/* ======================== CREATE ========================= */
 
 export const createThread = async (
   data: Pick<NewThreadType, "title" | "body"> & { category?: "FEATURES"|"BUGS"|"GENERAL"|"FEEDBACK" }
@@ -99,7 +88,6 @@ export const createThread = async (
 
   const created = await createNewThread({ ...parsed.data, authorId: userId });
 
-  // Invalidate caches & paksa reread
   await invalidateThreadsList();
 
   return created; // { id }
@@ -116,8 +104,6 @@ export const createReply = async (data: Pick<NewReplyType, "threadId" | "body">)
 
   return created;
 };
-
-/* ========================= UPDATE ======================== */
 
 export const editThread = async (
   threadId: number,
@@ -145,8 +131,6 @@ export const editReply = async (replyId: number, payload: { body: string }) => {
 
   return updated; // { id }
 };
-
-/* ========================= DELETE ======================== */
 
 export const deleteThread = async (threadId: number, opts?: { hard?: boolean }) => {
   const userId = await validateUser();
