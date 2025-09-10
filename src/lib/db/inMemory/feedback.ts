@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { ThreadListType } from "@/constant/prismaQuery";
 
 type State = { data: ThreadListType[] | null; updatedAt: number };
