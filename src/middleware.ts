@@ -8,6 +8,12 @@ export default clerkMiddleware((auth, req: NextRequest) => {
 
   const res = NextResponse.next();
 
+  // Hapus noindex header di production
+  if (process.env.NODE_ENV === "production") {
+    res.headers.delete("X-Robots-Tag");
+    res.headers.set("X-Robots-Tag", "index, follow");
+  }
+
   const hasLang = req.cookies.get("language");
   if (!hasLang && !url.startsWith("/api")) {
     const al = (req.headers.get("accept-language") || "").toLowerCase();
