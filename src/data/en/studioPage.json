@@ -10,16 +10,32 @@
     "noResults": "No tools found"
   },
   "categories": {
-    "web": "Web",
+    "productivity": "Productivity",
     "ai": "Artificial intelligence"
   },
   "tools": [
     {
       "id": "phishing",
-      "name": "phishing Checker",
+      "name": "Phishing Checker",
       "description": "Artificial intelligence-based phishing detection system.",
       "category": "ai",
       "url": "https://phish.vedabe.com",
+      "color": "#007ACC"
+    },
+    {
+      "id": "lorem",
+      "name": "Lorem Ipsum generator",
+      "description": "Generate lorem ipsum text for your apps and design!",
+      "category": "productivity",
+      "url": "https://lorem.vedabe.com",
+      "color": "#007ACC"
+    },
+    {
+      "id": "type",
+      "name": "TypeTally",
+      "description": "A clean, modern character counter utility!",
+      "category": "productivity",
+      "url": "https://typetally.vedabe.com",
       "color": "#007ACC"
     }
   ],

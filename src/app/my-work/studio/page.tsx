@@ -7,23 +7,15 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 
 import type { IconType } from "react-icons"
-// Pilih ikon yang kamu pakai (bisa ditambah kapan saja)
-import { FaShieldAlt, FaRobot, FaCloud } from "react-icons/fa"        // FA5
-import { RiCodeSSlashLine, RiDatabase2Line } from "react-icons/ri"
-import { MdSecurity, MdOutlinePalette } from "react-icons/md"
-import { TbApi } from "react-icons/tb"
+import { FaShieldAlt, FaRegFileAlt } from "react-icons/fa"
+import { RxText } from "react-icons/rx";
 import Link from "next/link"
 
 // Daftar ikon mengikuti urutan tools di JSON (tanpa prop icon)
 const ICONS: IconType[] = [
   FaShieldAlt,
-  RiCodeSSlashLine, // SAMPLE
-  MdSecurity,       // SAMPLE
-  RiDatabase2Line,  // SAMPLE
-  TbApi,            // SAMPLE
-  MdOutlinePalette, // SAMPLE
-  FaRobot,          // SAMPLE
-  FaCloud,          // SAMPLE
+  FaRegFileAlt,
+  RxText
 ]
 
 export default function StudioPage() {
