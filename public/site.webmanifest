@@ -1,0 +1,12 @@
+{
+  "name": "Veda Bezaleel - Fullstack Developer",
+  "short_name": "Veda Bezaleel",
+  "description": "Portfolio Veda Bezaleel - Fullstack Developer showcasing web development projects, technical skills, and professional experience",
+  "start_url": "/",
+  "display": "standalone",
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
