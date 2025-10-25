@@ -45,10 +45,10 @@ export const baseMetadata: Metadata = {
 //   },
   robots: {
     index: true,
-    follow: true,
+    follow: false,
     googleBot: {
       index: true,
-      follow: true,
+      follow: false,
       "max-snippet": -1,
       "max-image-preview": "large",
       "max-video-preview": -1,
