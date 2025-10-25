@@ -18,6 +18,7 @@ import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
 import LocalTime from "../LocalTime"
 import projectPageData from "@/data/en/projectsPage.json"
+import { FaCode } from "react-icons/fa"
 
 interface HeroProps {
   isVisible: boolean

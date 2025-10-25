@@ -1,29 +1,31 @@
+// app/layout.tsx
+
 import type React from "react";
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import AppShell from "@/components/AppShell";
 
-// SEO imports
 import { baseMetadata } from "@/seo/metadata";
-import { JsonLdPerson, JsonLdWebsite } from "@/seo/jsonld";
+import { personJsonLd, websiteJsonLd } from "@/seo/jsonld";
 
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 const sourceSans = Source_Sans_3({ subsets: ["latin"], display: "swap", variable: "--font-source-sans" });
 
-export const metadata: Metadata = baseMetadata;
+export const metadata: Metadata = {
+  ...baseMetadata,
+  other: {
+    'application/ld+json': JSON.stringify([personJsonLd, websiteJsonLd]),
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable} antialiased`}>
-      {/* JSON-LD in <head> via beforeInteractive */}
-      <JsonLdPerson />
-      <JsonLdWebsite />
-
       <body>
-        {/* --- SSR Preloader: your original code --- */}
         <div id="ssr-preloader" style={{
           position: "fixed", inset: 0, zIndex: 9999, display: "flex",
           alignItems: "center", justifyContent: "center",
@@ -42,23 +44,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}
           />
         </div>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var remove = function(){
-                  var el = document.getElementById('ssr-preloader');
-                  if (el && el.parentNode) el.parentNode.removeChild(el);
-                };
-                if (document.readyState === 'complete') {
-                  setTimeout(remove, 300);
-                } else {
-                  window.addEventListener('load', function(){ setTimeout(remove, 300); });
-                }
-              })();
-            `,
-          }}
-        />
+        
+        <Script id="ssr-preloader-remover" strategy="afterInteractive">
+          {`
+            (function(){
+              var remove = function(){
+                var el = document.getElementById('ssr-preloader');
+                if (el && el.parentNode) el.parentNode.removeChild(el);
+              };
+              if (document.readyState === 'complete') {
+                setTimeout(remove, 300);
+              } else {
+                window.addEventListener('load', function(){ setTimeout(remove, 300); });
+              }
+            })();
+          `}
+        </Script>
 
         <ThemeProvider>
           <LanguageProvider>
