@@ -17,7 +17,7 @@ import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
 import LocalTime from "../LocalTime"
 import projectPageData from "@/data/en/projectsPage.json"
-import { RiCompassDiscoverLine } from "react-icons/ri";
+import { TiCode } from "react-icons/ti";
 
 interface HeroProps {
   isVisible: boolean
@@ -55,7 +55,7 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
             <div className="relative bg-card dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-border dark:border-slate-700 card-hover-lift">
               <div className="absolute -top-2 -right-2 gentle-float">
                 <div className="w-6 h-6 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center">
-                  <RiCompassDiscoverLine className="w-3 h-3 text-accent-foreground" />
+                  <TiCode className="w-3 h-3 text-accent-foreground scale-150" />
                 </div>
               </div>
 
