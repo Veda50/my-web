@@ -41,18 +41,14 @@ export function ParticleBackground({ isDark }: ParticleBackgroundProps) {
       x: number
       y: number
       size: number
-      vx: number
-      vy: number
       opacity: number
-      rotation: number
-      rotationSpeed: number
-      pulsePhase: number
-      pulseSpeed: number
-      twinklePhase: number
-      twinkleSpeed: number
       life: number
       maxLife: number
       color: { r: number; g: number; b: number }
+      type: 'small' | 'medium' | 'large'
+      state: 'fadeIn' | 'visible' | 'fadeOut' | 'waiting'
+      delayCounter: number
+      delayMax: number
     }> = []
 
     // Initialize particles based on mode
@@ -74,64 +70,171 @@ export function ParticleBackground({ isDark }: ParticleBackgroundProps) {
     } else {
       // Create shiny stars for light mode
       const blueColors = [
-        { r: 147, g: 197, b: 253 },  // blue-300 - soft
+        { r: 147, g: 197, b: 253 },  // blue-300
         { r: 96, g: 165, b: 250 },   // blue-400
         { r: 59, g: 130, b: 246 },   // blue-500
-        { r: 191, g: 219, b: 254 },  // blue-200 - very soft
+        { r: 191, g: 219, b: 254 },  // blue-200
       ]
       
-      const starCount = 50 // Increased count for more twinkles
+      // Pool bintang yang cukup tapi tidak terlalu banyak
+      const starCount = 60
       
       for (let i = 0; i < starCount; i++) {
+        const sizeRand = Math.random()
+        let size, type: 'small' | 'medium' | 'large'
+        
+        // PERBAIKAN: Ukuran bintang diperbesar
+        if (sizeRand < 0.4) {
+          // 40% small stars - UKURAN DIPERBESAR
+          size = Math.random() * 5 + 4 // 4-9px (dari 2-5px)
+          type = 'small'
+        } else if (sizeRand < 0.8) {
+          // 40% medium stars - UKURAN DIPERBESAR
+          size = Math.random() * 8 + 6 // 6-14px (dari 4-9px)
+          type = 'medium'
+        } else {
+          // 20% large stars - UKURAN DIPERBESAR
+          size = Math.random() * 10 + 8 // 8-18px (dari 6-13px)
+          type = 'large'
+        }
+        
+        // PERBAIKAN: Delay awal lebih panjang
+        const delayMax = Math.random() * 150 + 100 // 100-250 frame delay
+        
         lightStars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 6 + 4, // 4-10px - larger stars
-          vx: (Math.random() - 0.5) * 0.4, // Faster movement
-          vy: (Math.random() - 0.5) * 0.4,
-          opacity: Math.random() * 0.5 + 0.4, // 0.4-0.9 - more visible
-          rotation: Math.random() * Math.PI * 2,
-          rotationSpeed: (Math.random() - 0.5) * 0.04, // Faster rotation
-          pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: Math.random() * 0.05 + 0.03, // Faster pulse
-          twinklePhase: Math.random() * Math.PI * 2,
-          twinkleSpeed: Math.random() * 0.08 + 0.04, // Faster twinkle
-          life: Math.random() * 100,
-          maxLife: 150 + Math.random() * 100, // Shorter life for faster twinkle
+          size: size,
+          opacity: 0,
+          life: 0,
+          maxLife: 40 + Math.random() * 40, // Life yang lebih panjang
           color: blueColors[Math.floor(Math.random() * blueColors.length)],
+          type: type,
+          state: 'waiting',
+          delayCounter: 0,
+          delayMax: delayMax
         })
       }
     }
 
-    // Draw a star shape
-    const drawStar = (ctx: CanvasRenderingContext2D, cx: number, cy: number, spikes: number, outerRadius: number, innerRadius: number, rotation: number) => {
+    // Draw the complete star with proper layering
+    const drawShineStar = (
+      ctx: CanvasRenderingContext2D,
+      x: number,
+      y: number,
+      size: number,
+      opacity: number,
+      color: { r: number; g: number; b: number },
+      type: 'small' | 'medium' | 'large'
+    ) => {
       ctx.save()
-      ctx.translate(cx, cy)
-      ctx.rotate(rotation)
+      ctx.translate(x, y)
+      
+      // Calculate dimensions based on star type
+      const starSize = size
+      const glowSize = starSize * (type === 'large' ? 2.2 : type === 'medium' ? 1.9 : 1.6)
+      
+      // 1. Draw outer glow (behind everything)
+      const outerGlow = ctx.createRadialGradient(0, 0, 0, 0, 0, glowSize)
+      outerGlow.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.25})`)
+      outerGlow.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.1})`)
+      outerGlow.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`)
       
       ctx.beginPath()
+      ctx.arc(0, 0, glowSize, 0, Math.PI * 2)
+      ctx.fillStyle = outerGlow
+      ctx.fill()
       
-      for (let i = 0; i < spikes; i++) {
-        // Outer point
-        const angle1 = (i * 2 * Math.PI) / spikes
-        const x1 = Math.cos(angle1) * outerRadius
-        const y1 = Math.sin(angle1) * outerRadius
-        
-        // Inner point
-        const angle2 = angle1 + Math.PI / spikes
-        const x2 = Math.cos(angle2) * innerRadius
-        const y2 = Math.sin(angle2) * innerRadius
-        
-        if (i === 0) {
-          ctx.moveTo(x1, y1)
-        } else {
-          ctx.lineTo(x1, y1)
-        }
-        
-        ctx.lineTo(x2, y2)
+      // Diamond 1: Vertical diamond
+      const d1Width = starSize * 0.15
+      const d1Height = starSize * 0.7
+      
+      ctx.beginPath()
+      ctx.moveTo(0, -d1Height)
+      ctx.lineTo(d1Width, 0)
+      ctx.lineTo(0, d1Height)
+      ctx.lineTo(-d1Width, 0)
+      ctx.closePath()
+      
+      // Fill diamond 1 dengan WHITE gradient yang solid
+      const fillGradient1 = ctx.createRadialGradient(0, 0, 0, 0, 0, d1Height)
+      fillGradient1.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.98})`)
+      fillGradient1.addColorStop(0.4, `rgba(255, 255, 255, ${opacity * 0.9})`)
+      fillGradient1.addColorStop(0.8, `rgba(255, 255, 255, ${opacity * 0.6})`)
+      fillGradient1.addColorStop(1, `rgba(255, 255, 255, ${opacity * 0.3})`)
+      
+      ctx.fillStyle = fillGradient1
+      ctx.fill()
+      
+      // Stroke diamond 1 dengan warna yang lebih terang
+      const strokeWidth1 = Math.max(1, starSize * 0.08)
+      ctx.lineWidth = strokeWidth1
+      ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.8})`
+      ctx.lineJoin = 'round'
+      ctx.stroke()
+      
+      // Diamond 2: Horizontal diamond
+      const d2Width = starSize * 0.7
+      const d2Height = starSize * 0.15
+      
+      // Draw diamond 2
+      ctx.beginPath()
+      ctx.moveTo(0, -d2Height)
+      ctx.lineTo(d2Width, 0)
+      ctx.lineTo(0, d2Height)
+      ctx.lineTo(-d2Width, 0)
+      ctx.closePath()
+      
+      // Fill diamond 2 dengan WHITE gradient yang solid
+      const fillGradient2 = ctx.createRadialGradient(0, 0, 0, 0, 0, d2Width)
+      fillGradient2.addColorStop(0, `rgba(255, 255, 255, ${opacity})`)
+      fillGradient2.addColorStop(0.5, `rgba(255, 255, 255, ${opacity * 0.95})`)
+      fillGradient2.addColorStop(0.9, `rgba(255, 255, 255, ${opacity * 0.7})`)
+      fillGradient2.addColorStop(1, `rgba(255, 255, 255, ${opacity * 0.4})`)
+      
+      ctx.fillStyle = fillGradient2
+      ctx.fill()
+      
+      // Stroke diamond 2 dengan warna yang kuat
+      const strokeWidth2 = Math.max(0.8, starSize * 0.07)
+      ctx.lineWidth = strokeWidth2
+      ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.9})`
+      ctx.stroke()
+      
+      // Core yang lebih terang dan besar
+      const coreSize = starSize * 0.22
+      const coreGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, coreSize * 2)
+      coreGradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`)
+      coreGradient.addColorStop(0.4, `rgba(255, 255, 255, ${opacity * 0.9})`)
+      coreGradient.addColorStop(0.8, `rgba(255, 255, 255, ${opacity * 0.5})`)
+      coreGradient.addColorStop(1, `rgba(255, 255, 255, 0)`)
+      
+      ctx.beginPath()
+      ctx.arc(0, 0, coreSize, 0, Math.PI * 2)
+      ctx.fillStyle = coreGradient
+      ctx.fill()
+      
+      // Sparkle lines untuk semua ukuran, tapi lebih tipis untuk small
+      ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.9})`
+      ctx.lineWidth = type === 'small' ? Math.max(0.5, starSize * 0.04) : Math.max(0.7, starSize * 0.06)
+      ctx.lineCap = 'round'
+      
+      // Draw 4 main sparkle lines
+      const mainSparkleLength = starSize * 0.9
+      for (let i = 0; i < 4; i++) {
+        const angle = (i * Math.PI) / 2
+        ctx.beginPath()
+        ctx.moveTo(
+          Math.cos(angle) * coreSize * 0.5,
+          Math.sin(angle) * coreSize * 0.5
+        )
+        ctx.lineTo(
+          Math.cos(angle) * mainSparkleLength,
+          Math.sin(angle) * mainSparkleLength
+        )
+        ctx.stroke()
       }
       
-      ctx.closePath()
       ctx.restore()
     }
 
@@ -176,136 +279,129 @@ export function ParticleBackground({ isDark }: ParticleBackgroundProps) {
           }
         })
       } else {
-        // Draw shiny stars for light mode
+        // Background yang lebih gelap agar bintang lebih terlihat
+        const bgGradient = ctx.createRadialGradient(
+          canvas.width / 2, canvas.height / 2, 0,
+          canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 1.5
+        )
+        bgGradient.addColorStop(0, 'rgba(219, 234, 254, 0.08)')
+        bgGradient.addColorStop(0.7, 'rgba(219, 234, 254, 0.03)')
+        bgGradient.addColorStop(1, 'rgba(219, 234, 254, 0)')
+        
+        ctx.fillStyle = bgGradient
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+        // Update dan draw shiny stars
         lightStars.forEach((star) => {
-          // Update life and fade in/out
-          star.life++
-          if (star.life > star.maxLife) {
-            // Reset star
-            star.x = Math.random() * canvas.width
-            star.y = Math.random() * canvas.height
-            star.life = 0
-            star.opacity = Math.random() * 0.5 + 0.4
-          }
-
-          // Update position with faster drift
-          star.x += star.vx
-          star.y += star.vy
-
-          // Bounce off edges
-          if (star.x < 0) star.vx = Math.abs(star.vx)
-          if (star.x > canvas.width) star.vx = -Math.abs(star.vx)
-          if (star.y < 0) star.vy = Math.abs(star.vy)
-          if (star.y > canvas.height) star.vy = -Math.abs(star.vy)
-
-          // Update rotation
-          star.rotation += star.rotationSpeed
-
-          // Pulse effect
-          star.pulsePhase += star.pulseSpeed
-          const pulse = Math.sin(star.pulsePhase) * 0.3 + 0.9 // 0.6-1.2 scale
-
-          // Twinkle effect
-          star.twinklePhase += star.twinkleSpeed
-          const twinkle = Math.sin(star.twinklePhase) * 0.4 + 0.6 // 0.2-1.0 scale
-
-          // Fade based on life cycle - faster transition
-          const lifeProgress = star.life / star.maxLife
-          let lifeOpacity = star.opacity
-          
-          if (lifeProgress < 0.3) {
-            // Faster fade in
-            lifeOpacity *= (lifeProgress / 0.3)
-          } else if (lifeProgress > 0.7) {
-            // Faster fade out
-            lifeOpacity *= (1 - (lifeProgress - 0.7) / 0.3)
-          }
-
-          // Combine pulse and twinkle effects
-          const combinedEffect = pulse * twinkle
-          const currentSize = star.size * combinedEffect
-          const currentOpacity = lifeOpacity * combinedEffect
-          
-          // Calculate outer and inner radii for star shape
-          const outerRadius = currentSize
-          const innerRadius = currentSize * 0.5
-          const spikes = 4 // 4-point star for diamond-like twinkle
-
-          // Draw star with gradient
-          ctx.save()
-          ctx.translate(star.x, star.y)
-          ctx.rotate(star.rotation)
-          
-          // Main star gradient
-          const starGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, outerRadius * 1.5)
-          starGradient.addColorStop(0, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${currentOpacity})`)
-          starGradient.addColorStop(0.5, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${currentOpacity * 0.6})`)
-          starGradient.addColorStop(1, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, 0)`)
-          
-          drawStar(ctx, 0, 0, spikes, outerRadius, innerRadius, 0)
-          ctx.fillStyle = starGradient
-          ctx.fill()
-          
-          // Add white highlight for sparkle effect
-          ctx.beginPath()
-          ctx.arc(0, 0, currentSize * 0.3, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.8})`
-          ctx.fill()
-          
-          // Add twinkle lines (small lines from center)
-          ctx.strokeStyle = `rgba(255, 255, 255, ${currentOpacity * 0.9})`
-          ctx.lineWidth = currentSize * 0.15
-          ctx.lineCap = 'round'
-          
-          // Draw 4 twinkle lines
-          for (let i = 0; i < 4; i++) {
-            const angle = (i * Math.PI) / 2
-            const lineLength = currentSize * 0.8
-            
-            ctx.beginPath()
-            ctx.moveTo(Math.cos(angle) * currentSize * 0.2, Math.sin(angle) * currentSize * 0.2)
-            ctx.lineTo(Math.cos(angle) * lineLength, Math.sin(angle) * lineLength)
-            ctx.stroke()
+          // State machine untuk animasi
+          switch (star.state) {
+            case 'waiting':
+              star.delayCounter++
+              if (star.delayCounter >= star.delayMax) {
+                star.state = 'fadeIn'
+                star.life = 0
+                star.delayCounter = 0
+              }
+              break
+              
+            case 'fadeIn':
+              star.life++
+              // PERBAIKAN: Fade in lebih lambat
+              const fadeInDuration = 25 // 25 frame (dari 15)
+              if (star.life <= fadeInDuration) {
+                // Easing in untuk fade yang lebih smooth
+                const progress = star.life / fadeInDuration
+                star.opacity = progress * progress // Quadratic easing in
+              } else {
+                star.state = 'visible'
+                star.life = 0
+              }
+              break
+              
+            case 'visible':
+              star.life++
+              // PERBAIKAN: Visible lebih lama
+              const visibleDuration = 25 + Math.random() * 15 // 25-40 frame (dari 10-20)
+              if (star.life >= visibleDuration) {
+                star.state = 'fadeOut'
+                star.life = 0
+              }
+              break
+              
+            case 'fadeOut':
+              star.life++
+              // PERBAIKAN: Fade out lebih lambat
+              const fadeOutDuration = 30 // 30 frame (dari 20)
+              if (star.life <= fadeOutDuration) {
+                // Easing out untuk fade yang lebih smooth
+                const progress = star.life / fadeOutDuration
+                star.opacity = 1 - (progress * progress) // Quadratic easing out
+              } else {
+                // Reset untuk siklus berikutnya
+                star.state = 'waiting'
+                star.opacity = 0
+                star.life = 0
+                star.delayCounter = 0
+                star.delayMax = Math.random() * 200 + 150 // Delay lebih panjang: 150-350 frame
+                // Pindah posisi untuk variasi
+                star.x = Math.random() * canvas.width
+                star.y = Math.random() * canvas.height
+              }
+              break
           }
           
-          // Outer glow
-          const glowGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, outerRadius * 2.5)
-          glowGradient.addColorStop(0, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${currentOpacity * 0.3})`)
-          glowGradient.addColorStop(0.5, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${currentOpacity * 0.1})`)
-          glowGradient.addColorStop(1, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, 0)`)
-          
-          ctx.fillStyle = glowGradient
-          ctx.beginPath()
-          ctx.arc(0, 0, outerRadius * 2, 0, Math.PI * 2)
-          ctx.fill()
-          
-          ctx.restore()
+          // Draw the star jika tidak dalam state waiting
+          if (star.state !== 'waiting') {
+            drawShineStar(
+              ctx,
+              star.x,
+              star.y,
+              star.size,
+              star.opacity,
+              star.color,
+              star.type
+            )
+          }
         })
         
-        // Occasionally spawn new stars for more dynamic effect
-        if (Math.random() < 0.03 && lightStars.length < 70) {
+        // Tambahkan bintang baru secara berkala
+        if (lightStars.length < 80 && Math.random() < 0.015) { // Rate spawn dikurangi
           const blueColors = [
             { r: 147, g: 197, b: 253 },
             { r: 96, g: 165, b: 250 },
             { r: 59, g: 130, b: 246 },
+            { r: 191, g: 219, b: 254 },
           ]
+          
+          const sizeRand = Math.random()
+          let size, type: 'small' | 'medium' | 'large'
+          
+          // Ukuran yang sama dengan inisialisasi awal
+          if (sizeRand < 0.2) {
+            size = Math.random() * 5 + 6 
+            type = 'small'
+          } else if (sizeRand < 0.6) {
+            size = Math.random() * 8 + 8 
+            type = 'medium'
+          } else {
+            size = Math.random() * 10 + 10 
+            type = 'large'
+          }
+          
+          const delayMax = Math.random() * 100 + 50 // 50-150 frame delay untuk yang baru
           
           lightStars.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 6 + 4,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            opacity: Math.random() * 0.5 + 0.4,
-            rotation: Math.random() * Math.PI * 2,
-            rotationSpeed: (Math.random() - 0.5) * 0.04,
-            pulsePhase: Math.random() * Math.PI * 2,
-            pulseSpeed: Math.random() * 0.05 + 0.03,
-            twinklePhase: Math.random() * Math.PI * 2,
-            twinkleSpeed: Math.random() * 0.08 + 0.04,
+            size: size,
+            opacity: 0,
             life: 0,
-            maxLife: 150 + Math.random() * 100,
+            maxLife: 50 + Math.random() * 50, // Life yang lebih panjang
             color: blueColors[Math.floor(Math.random() * blueColors.length)],
+            type: type,
+            state: 'waiting',
+            delayCounter: 0,
+            delayMax: delayMax
           })
         }
       }
