@@ -19,7 +19,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: HeaderProps) {
           <Button variant="ghost" size="sm" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <Menu className="w-5 h-5" />
           </Button>
-          <Link href="/" className="font-serif font-bold text-xl text-blue-600 dark:text-blue-400">Veda Bezaleel</Link>
+          <Link href="/" className="font-rubik font-bold text-xl text-blue-600 dark:text-blue-400">Veda Bezaleel</Link>
         </div>
 
         <div className="flex items-center gap-2">

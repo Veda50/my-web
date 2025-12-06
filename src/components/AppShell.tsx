@@ -97,7 +97,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             scrollToSection={scrollToSection}
           />
 
-          <main className="pt-20">{children}</main>
+          <main className="pt-16">{children}</main>
         </div>
       </ClerkProvider>
 

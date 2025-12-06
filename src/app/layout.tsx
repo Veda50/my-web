@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Playfair_Display, Poppins, Rubik } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -15,10 +15,18 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 });
 
-const sourceSans = Source_Sans_3({
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-source-sans",
+});
+
+const rubik = Rubik({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-rubik-raw",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${sourceSans.variable} antialiased`}
+      className={`${playfair.variable} ${poppins.variable} ${rubik.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>

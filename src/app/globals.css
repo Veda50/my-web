@@ -170,6 +170,8 @@
   /* Added custom font variables for typography */
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-source-sans);
+  --font-rubik: var(--font-rubik-raw), cursive;
+
 }
 
 @layer base {
