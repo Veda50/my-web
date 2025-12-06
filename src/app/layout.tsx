@@ -5,7 +5,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import AppShell from "@/components/AppShell";
-import ServerPreloader from "@/components/Preloader/Server";
 
 import { baseMetadata } from "@/seo/metadata";
 import { personJsonLd, websiteJsonLd } from "@/seo/jsonld";
@@ -37,7 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* Theme detection – harus dieksekusi sebelum hydrate */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -51,7 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
-        {/* Font readiness flag: cegah mismatch ukuran teks preloader */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -62,7 +59,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       document.documentElement.classList.add('font-ready');
                     });
                   } else {
-                    // Fallback: tetap tampilkan agar tidak hidden permanen
                     setTimeout(function(){ document.documentElement.classList.add('font-ready'); }, 1200);
                   }
                 } catch(e){}
@@ -72,11 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
-        {/* ServerPreloader di luar provider */}
-        <ServerPreloader />
-
-        {/* HAPUS remover script: penghapusan dihandle ClientPreloader */}
-
         <ThemeProvider>
           <LanguageProvider>
             <AppShell>{children}</AppShell>

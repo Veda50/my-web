@@ -11,50 +11,46 @@ export default function ClientPreloader({ isInitialLoad = true }: ClientPreloade
   const [isExiting, setIsExiting] = useState(false);
   const [progress, setProgress] = useState(isInitialLoad ? 30 : 0);
 
-  useEffect(() => {
-    // Hapus SSR preloader hanya di sini (hindari race)
-    const ssr = document.getElementById("ssr-preloader");
-    if (ssr) ssr.remove();
+useEffect(() => {
+  const html = document.documentElement;
+  const body = document.body;
+  const prevHtmlCursor = html.style.cursor;
+  const prevBodyCursor = body.style.cursor;
+  html.style.cursor = "wait";
+  body.style.cursor = "wait";
 
-    // Cursor
-    const html = document.documentElement;
-    const body = document.body;
-    const prevHtmlCursor = html.style.cursor;
-    const prevBodyCursor = body.style.cursor;
-    html.style.cursor = "wait";
-    body.style.cursor = "wait";
+  const start = isInitialLoad ? 30 : 0;
+  const duration = isInitialLoad ? 1700 : 1200;
+  setProgress(start);
 
-    const start = isInitialLoad ? 30 : 0;
-    const duration = isInitialLoad ? 1700 : 1200;
-    setProgress(start);
+  const stepMs = Math.max(10, Math.floor(duration / Math.max(1, 100 - start)));
+  const iv = setInterval(() => {
+    setProgress((p) => {
+      if (p >= 100) {
+        clearInterval(iv);
+        return 100;
+      }
+      return p + 1;
+    });
+  }, stepMs);
 
-    const stepMs = Math.max(10, Math.floor(duration / Math.max(1, 100 - start)));
-    const iv = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(iv);
-          return 100;
-        }
-        return p + 1;
-      });
-    }, stepMs);
-
-    const t = setTimeout(() => {
-      setIsExiting(true);
-      setTimeout(() => {
-        html.style.cursor = prevHtmlCursor;
-        body.style.cursor = prevBodyCursor;
-        setIsLoading(false);
-      }, 500);
-    }, duration);
-
-    return () => {
-      clearInterval(iv);
-      clearTimeout(t);
+  const t = setTimeout(() => {
+    setIsExiting(true);
+    setTimeout(() => {
       html.style.cursor = prevHtmlCursor;
       body.style.cursor = prevBodyCursor;
-    };
-  }, [isInitialLoad]);
+      setIsLoading(false);
+    }, 500);
+  }, duration);
+
+  return () => {
+    clearInterval(iv);
+    clearTimeout(t);
+    html.style.cursor = prevHtmlCursor;
+    body.style.cursor = prevBodyCursor;
+  };
+}, [isInitialLoad]);
+
 
   if (!isLoading) return null;
 

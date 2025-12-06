@@ -15,7 +15,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
   const [previousPathname, setPreviousPathname] = useState(pathname);
 
   const [activeSection, setActiveSection] = useState("hero");
@@ -24,10 +24,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const { isDarkMode, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
 
-  // Initial load: tampilkan preloader client
   useEffect(() => {
-    setShowPreloader(true);
-
     const timer = setTimeout(() => {
       setIsInitialLoad(false);
       setShowPreloader(false);
@@ -36,7 +33,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Route change preloader (setelah initial)
   useEffect(() => {
     if (!isInitialLoad && pathname !== previousPathname) {
       setShowPreloader(true);
@@ -50,7 +46,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }, [pathname, isInitialLoad, previousPathname]);
 
-  // Scroll spy
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["hero", "about", "journey", "portfolio", "testimonials", "contact"];
@@ -85,11 +80,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         isDarkMode ? "bg-slate-900 text-white" : "bg-gradient-to-br from-slate-50 to-slate-100"
       }`}
     >
-      {/* Client Preloader di luar ClerkProvider */}
       {showPreloader && <ClientPreloader key={pathname} isInitialLoad={isInitialLoad} />}
 
       <ClerkProvider>
-        {/* PENTING: konten tidak pernah di-opacity-0. Preloader menutup dari atas. */}
         <div className="transition-opacity duration-500">
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -108,12 +101,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       </ClerkProvider>
 
-      {/* Global Styles */}
       <style jsx global>{`
         @keyframes marquee { 0% { transform: translateX(0%);} 100% { transform: translateX(-50%);} }
         .animate-marquee { animation: marquee 20s linear infinite; }
 
-        /* Hindari wildcard * transition. Batasi pada elemen interaktif umum */
         a, button {
           transition:
             color 150ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -122,7 +113,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             opacity 150ms cubic-bezier(0.4, 0, 0.2, 1),
             transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
         }
-        /* Font utility */
         .font-playfair { font-family: var(--font-playfair); }
       `}</style>
     </div>
