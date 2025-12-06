@@ -41,7 +41,7 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains('dark')
     setIsDark(isDarkMode)
-    
+
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
