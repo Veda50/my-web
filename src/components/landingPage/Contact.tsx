@@ -55,19 +55,20 @@ export default function Contact() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            target="_blank"
-            rel="noopener noreferrer"
-            href={"https://wa.me/628812470248"}
+          <Button
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
           >
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href={"https://wa.me/628812470248"}
+              className="flex items-center"
             >
               <Mail className="w-4 h-4 mr-2" />
               {data.cta?.primary || "Send Message"}
-            </Button>
-          </Link>
+            </Link>
+          </Button>
           <Button
             variant="outline"
             size="lg"
