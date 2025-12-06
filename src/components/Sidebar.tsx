@@ -17,9 +17,10 @@ import {
   FileText,
 } from "lucide-react";
 import { IoPricetagsOutline } from "react-icons/io5";
+import { GrDocumentText } from "react-icons/gr";
 import { useRouter, usePathname } from "next/navigation";
 import rawMenu from "@/data/menu.json";
-import { useUser, SignInButton, SignUpButton, SignOutButton } from "@clerk/nextjs";
+import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 
 interface SubItem { title: string; route: string; sectionId?: string }
 interface MenuItem { title: string; route: string; sectionId?: string; sub?: SubItem[] }
@@ -61,6 +62,7 @@ export default function Sidebar({
       case "my experiences": return Calendar;
       case "my skills": return User;
       case "order": return IoPricetagsOutline;
+      case "certification": return GrDocumentText;
       default: return Home;
     }
   };

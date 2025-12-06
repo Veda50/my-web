@@ -42,5 +42,9 @@
   {
     "title": "Order",
     "route": "/order"
+  },
+  {
+    "title": "Certification",
+    "route": "/certification"
   }
 ]
