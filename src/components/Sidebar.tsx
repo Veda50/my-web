@@ -16,6 +16,7 @@ import {
   Code,
   FileText,
 } from "lucide-react";
+import { IoPricetagsOutline } from "react-icons/io5";
 import { useRouter, usePathname } from "next/navigation";
 import rawMenu from "@/data/menu.json";
 import { useUser, SignInButton, SignUpButton, SignOutButton } from "@clerk/nextjs";
@@ -59,6 +60,7 @@ export default function Sidebar({
       case "about": return User;
       case "my experiences": return Calendar;
       case "my skills": return User;
+      case "order": return IoPricetagsOutline;
       default: return Home;
     }
   };

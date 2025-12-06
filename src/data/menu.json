@@ -38,5 +38,9 @@
   {
     "title": "Feedback",
     "route": "/feedback"
+  },
+  {
+    "title": "Order",
+    "route": "/order"
   }
 ]
