@@ -106,14 +106,12 @@ useEffect(() => {
         {/* Brand + divider + progress (Client MENAMPILKAN %) */}
         <div>
           <h2
-            className="pre-title font-playfair"
+            className="pre-title font-rubik text-slate-700 dark:text-slate-200"
             style={{
               fontSize: "1.5rem",
               fontWeight: 300,
               letterSpacing: "0.1em",
-              color: "#374151",
               marginBottom: "0.5rem",
-              fontFamily: "var(--font-playfair)",
               transition: "color 0.3s ease",
               visibility: "hidden", // muncul saat html.font-ready
             }}
