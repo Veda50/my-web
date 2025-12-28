@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useUser, SignInButton } from "@clerk/nextjs";
 import {
   MessageSquare,
   Eye,
@@ -11,7 +12,8 @@ import {
   Filter,
   ChevronDown,
   Search,
-  Languages,
+  Plus,
+  X,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -38,7 +40,7 @@ type ThreadItem = {
   category: "FEATURES" | "BUGS" | "GENERAL" | "FEEDBACK";
   views: number;
   repliesCount: number;
-  createdAt: string; // ISO
+  createdAt: string;
 };
 
 const categoryLabelEN: Record<ThreadItem["category"], string> = {
@@ -79,33 +81,34 @@ function timeAgo(iso: string, lang: "en" | "id") {
   });
 }
 
-// berapa item yang dipin sebagai "Popular"
 const POPULAR_COUNT = 1;
 
 export default function FeedbackClient({ initialThreads }: { initialThreads: ThreadItem[] }) {
   const router = useRouter();
-  const { language, setLanguage } = useLanguage() as {
+  const { language } = useLanguage() as {
     language: "en" | "id";
     setLanguage?: (lang: "en" | "id") => void;
   };
+  const { isSignedIn } = useUser();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<"all" | ThreadItem["category"]>("all");
   const [sortBy, setSortBy] = useState<"latest" | "oldest" | "popular">("latest");
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [mobileModalOpen, setMobileModalOpen] = useState(false);
 
   const catLabel = language === "en" ? categoryLabelEN : categoryLabelID;
 
-  // Hitung popular sekali (berdasarkan data awal)
   const popularIds = useMemo(() => {
     const sorted = [...initialThreads].sort((a, b) => {
-      if (b.repliesCount !== a.repliesCount) return b.repliesCount - a.repliesCount; // utama
-      if (b.views !== a.views) return b.views - a.views; // tie-break
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // tie-break
+      // Popular berdasarkan jumlah views (sesuai permintaan)
+      if (b.views !== a.views) return b.views - a.views;
+      if (b.repliesCount !== a.repliesCount) return b.repliesCount - a.repliesCount;
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
     return new Set(sorted.slice(0, POPULAR_COUNT).map((t) => t.id));
   }, [initialThreads]);
 
-  // Filter + sort di client, lalu PASTIKAN popular dipin paling atas
   const threads = useMemo(() => {
     const q = searchQuery.toLowerCase();
     const filtered = initialThreads.filter((t) => {
@@ -114,15 +117,17 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
       return matchesQ && matchesCat;
     });
 
+    // eslint-disable-next-line prefer-const
     let sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case "popular":
-          if (b.repliesCount !== a.repliesCount) return b.repliesCount - a.repliesCount;
+          // Popular berdasarkan views
           if (b.views !== a.views) return b.views - a.views;
+          if (b.repliesCount !== a.repliesCount) return b.repliesCount - a.repliesCount;
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         case "oldest":
           return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-        default:
+        default: // latest
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       }
     });
@@ -133,52 +138,118 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
   }, [initialThreads, searchQuery, selectedCategory, sortBy, popularIds]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">Feedback</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/5">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8 max-w-6xl">
+        {/* Header dengan gradient modern */}
+        <div className="text-center mb-6 sm:mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 blur-3xl -z-10" />
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-2 sm:mb-3">
+            {language === "en" ? "Community Feedback" : "Forum Masukan"}
+          </h1>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             {language === "en"
               ? "Share ideas, report bugs, or give suggestions to improve this site."
               : "Bagikan ide, laporan bug, atau saran untuk meningkatkan situs ini."}
           </p>
         </div>
 
-        {/* Search & Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8 animate-fade-in-up animate-delay-400">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-            <Input
-              placeholder={language === "en" ? "Search feedback…" : "Cari feedback…"}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
+        {/* Search Bar - Modern dengan efek glass */}
+        <div className="mb-4 sm:mb-6 relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300" />
+          <div className="relative bg-background/50 backdrop-blur-sm rounded-2xl border">
+            <div className="flex items-center px-3">
+              <Search className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground mr-2" />
+              <Input
+                placeholder={
+                  language === "en" ? "Search feedback…" : "Cari feedback…"
+                }
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-0 h-12 text-base"
+              />
+              {searchQuery && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSearchQuery("")}
+                  className="h-8 w-8 p-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Filter Toggle */}
+        <div className="flex items-center justify-between mb-4 sm:hidden">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowMobileFilters(!showMobileFilters)}
+              className="h-9 rounded-xl"
+            >
+              <Filter className="h-4 w-4 mr-2" />
+              {language === "en" ? "Filters" : "Filter"}
+              <ChevronDown
+                className={`h-4 w-4 ml-2 transition-transform ${
+                  showMobileFilters ? "rotate-180" : ""
+                }`}
+              />
+            </Button>
+
+            {/* Active filters badge */}
+            {(selectedCategory !== "all" || sortBy !== "latest") && (
+              <Badge variant="secondary" className="rounded-lg">
+                {selectedCategory !== "all" ? 1 : 0} +{" "}
+                {sortBy !== "latest" ? 1 : 0}
+              </Badge>
+            )}
           </div>
 
-          <div className="flex gap-2 items-center">
-            {/* Category */}
+                    <NewThreadModal
+            redirectToDetail={false}
+            onThreadCreated={() => router.refresh()}
+          />
+
+        </div>
+
+        {/* Desktop Filter Controls */}
+        <div className="hidden sm:flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            {/* Category Filter */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="min-w-[140px] h-10 bg-transparent">
+                <Button
+                  variant="outline"
+                  className="h-10 rounded-xl border-2 min-w-40"
+                >
                   <Filter className="h-4 w-4 mr-2" />
-                  {selectedCategory === "all"
-                    ? language === "en"
-                      ? "All"
-                      : "Semua"
-                    : catLabel[selectedCategory]}
+                  <span className="truncate">
+                    {selectedCategory === "all"
+                      ? language === "en"
+                        ? "All Categories"
+                        : "Semua Kategori"
+                      : catLabel[selectedCategory]}
+                  </span>
                   <ChevronDown className="h-4 w-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setSelectedCategory("all")}>
-                  {language === "en" ? "All" : "Semua"}
+              <DropdownMenuContent className="rounded-xl min-w-[200px]">
+                <DropdownMenuItem
+                  onClick={() => setSelectedCategory("all")}
+                  className="rounded-lg cursor-pointer"
+                >
+                  {language === "en" ? "All Categories" : "Semua Kategori"}
                 </DropdownMenuItem>
                 {Object.keys(catLabel).map((key) => (
                   <DropdownMenuItem
                     key={key}
-                    onClick={() => setSelectedCategory(key as ThreadItem["category"])}
+                    onClick={() =>
+                      setSelectedCategory(key as ThreadItem["category"])
+                    }
+                    className="rounded-lg cursor-pointer"
                   >
                     {catLabel[key as ThreadItem["category"]]}
                   </DropdownMenuItem>
@@ -186,72 +257,129 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Sort */}
+            {/* Sort Filter */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="min-w-[140px] h-10 bg-transparent">
+                <Button
+                  variant="outline"
+                  className="h-10 rounded-xl border-2 min-w-[140px]"
+                >
                   <TrendingUp className="h-4 w-4 mr-2" />
-                  {sortBy === "latest"
-                    ? language === "en"
-                      ? "Latest"
-                      : "Terbaru"
-                    : sortBy === "oldest"
-                    ? language === "en"
-                      ? "Oldest"
-                      : "Terlama"
-                    : language === "en"
-                    ? "Popular"
-                    : "Terpopuler"}
+                  <span className="truncate">
+                    {sortBy === "latest"
+                      ? language === "en"
+                        ? "Latest"
+                        : "Terbaru"
+                      : sortBy === "oldest"
+                      ? language === "en"
+                        ? "Oldest"
+                        : "Terlama"
+                      : language === "en"
+                      ? "Popular"
+                      : "Terpopuler"}
+                  </span>
                   <ChevronDown className="h-4 w-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setSortBy("latest")}>
+              <DropdownMenuContent className="rounded-xl">
+                <DropdownMenuItem
+                  onClick={() => setSortBy("latest")}
+                  className="rounded-lg cursor-pointer"
+                >
                   {language === "en" ? "Latest" : "Terbaru"}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setSortBy("oldest")}>
+                <DropdownMenuItem
+                  onClick={() => setSortBy("oldest")}
+                  className="rounded-lg cursor-pointer"
+                >
                   {language === "en" ? "Oldest" : "Terlama"}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setSortBy("popular")}>
+                <DropdownMenuItem
+                  onClick={() => setSortBy("popular")}
+                  className="rounded-lg cursor-pointer"
+                >
                   {language === "en" ? "Popular" : "Terpopuler"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
-            {/* Language */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="min-w-[96px] h-10 bg-transparent">
-                  <Languages className="h-4 w-4 mr-2" />
-                  {language === "en" ? "EN" : "ID"}
-                  <ChevronDown className="h-4 w-4 ml-2" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage?.("en")}>English</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage?.("id")}>Indonesia</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Submit Feedback (Modal) — stay on list & re-read */}
-            <NewThreadModal
-              redirectToDetail={false}
-              onThreadCreated={() => router.refresh()}
-            />
-
-            {/* (Opsional) Fallback link */}
-            {/*
-            <Button asChild className="min-w-[140px] h-10">
-              <Link href="/feedback/new" aria-label={language === "en" ? "Submit feedback" : "Kirim feedback"}>
-                <Plus className="h-4 w-4 mr-2" />
-                {language === "en" ? "Submit Feedback" : "Kirim Feedback"}
-              </Link>
-            </Button>
-            */}
           </div>
+
+          {/* Desktop New Thread Button */}
+          <NewThreadModal
+            redirectToDetail={false}
+            onThreadCreated={() => router.refresh()}
+          />
         </div>
 
-        {/* List */}
+        {/* Mobile Filters Panel */}
+        {showMobileFilters && (
+          <div className="sm:hidden mb-4 animate-in slide-in-from-top duration-200">
+            <div className="bg-card/50 backdrop-blur-sm rounded-2xl border p-4 space-y-3">
+              <div>
+                <h3 className="text-sm font-medium mb-2">
+                  {language === "en" ? "Category" : "Kategori"}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant={selectedCategory === "all" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedCategory("all")}
+                    className="rounded-lg"
+                  >
+                    {language === "en" ? "All" : "Semua"}
+                  </Button>
+                  {Object.keys(catLabel).map((key) => (
+                    <Button
+                      key={key}
+                      variant={selectedCategory === key ? "default" : "outline"}
+                      size="sm"
+                      onClick={() =>
+                        setSelectedCategory(key as ThreadItem["category"])
+                      }
+                      className="rounded-lg"
+                    >
+                      {catLabel[key as ThreadItem["category"]]}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium mb-2">
+                  {language === "en" ? "Sort by" : "Urutkan"}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant={sortBy === "latest" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSortBy("latest")}
+                    className="rounded-lg"
+                  >
+                    {language === "en" ? "Latest" : "Terbaru"}
+                  </Button>
+                  <Button
+                    variant={sortBy === "oldest" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSortBy("oldest")}
+                    className="rounded-lg"
+                  >
+                    {language === "en" ? "Oldest" : "Terlama"}
+                  </Button>
+                  <Button
+                    variant={sortBy === "popular" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSortBy("popular")}
+                    className="rounded-lg"
+                  >
+                    {language === "en" ? "Popular" : "Terpopuler"}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Threads List - Card tetap sama */}
         <div className="space-y-4">
           {threads.length === 0 ? (
             <Card className="text-center py-12 animate-fade-in-up">
@@ -309,19 +437,25 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3 min-w-0">
                         <Avatar className="h-6 w-6 shrink-0">
-                          <AvatarImage src={t.authorAvatar || "/placeholder.svg"} alt={t.authorName} />
+                          <AvatarImage
+                            src={t.authorAvatar || "/placeholder.svg"}
+                            alt={t.authorName}
+                          />
                           <AvatarFallback className="text-xs">
                             {(t.authorName || "AN").slice(0, 2).toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
-                        <span className="text-sm text-muted-foreground truncate">{t.authorName}</span>
+                        <span className="text-sm text-muted-foreground truncate">
+                          {t.authorName}
+                        </span>
                       </div>
 
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
                           <MessageSquare className="h-4 w-4" />
                           <span>
-                            {t.repliesCount} {language === "en" ? "replies" : "balasan"}
+                            {t.repliesCount}{" "}
+                            {language === "en" ? "replies" : "balasan"}
                           </span>
                         </div>
                         <div className="flex items-center gap-1">
@@ -345,6 +479,8 @@ export default function FeedbackClient({ initialThreads }: { initialThreads: Thr
           )}
         </div>
       </div>
+
+      {/* Modal untuk mobile (controlled) */}
     </div>
   );
 }

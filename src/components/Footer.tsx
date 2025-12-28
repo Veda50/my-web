@@ -65,10 +65,10 @@ export default function Footer() {
     (language === "id"
       ? `© ${
           year ?? ""
-        } ${brandName}. Semua hak dilindungi. Dibangun dengan semangat untuk pengembangan web.`
+        } ${brandName}. Semua hak dilindungi.`
       : `© ${
           year ?? ""
-        } ${brandName}. All rights reserved. Built with passion for web development.`);
+        } ${brandName}. All rights reserved.`);
 
   const isInternal = (href: string) =>
     href.startsWith("#") || href.startsWith("/");

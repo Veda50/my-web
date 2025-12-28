@@ -6,11 +6,12 @@ import { auth } from "@clerk/nextjs/server";
 import { getThreadById } from "@/actions/feedback";
 import ThreadDetailClient from "./_client";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const id = Number((await params).id);
   if (Number.isNaN(id)) notFound();
 
   const data = await getThreadById(id);
+  console.log(data);
   if (!data) notFound();
 
   const { userId } = await auth();

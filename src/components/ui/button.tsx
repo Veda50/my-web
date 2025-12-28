@@ -10,16 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-blue-600 text-white shadow-sm hover:bg-blue-700 active:bg-blue-800 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-red-600 text-white shadow-sm hover:bg-red-700 active:bg-red-800 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-colors",
         outline:
-          "border bg-background shadow-xs hover:bg-orange-500 hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "border border-blue-300 bg-white text-blue-600 shadow-sm hover:bg-blue-50 hover:border-blue-400 active:bg-blue-100 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:bg-slate-950 dark:border-blue-800 dark:text-blue-400 dark:hover:bg-blue-950 dark:hover:border-blue-700 transition-colors",
         ghost:
-          "hover:bg-orange-500 hover:text-accent-foreground dark:hover:bg-orange-500/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "text-blue-600 hover:bg-blue-50 hover:text-blue-700 active:bg-blue-100 dark:text-blue-400 dark:hover:bg-blue-950 dark:hover:text-blue-300 transition-colors",
+        link: "text-blue-600 underline-offset-4 hover:underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -33,7 +31,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 function Button({
   className,
