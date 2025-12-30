@@ -62,7 +62,7 @@ export default function Contact() {
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              href={"https://wa.me/628812470248"}
+              href={"https://www.linkedin.com/in/veda-bezaleel/"}
               className="flex items-center"
             >
               <SiLinkedin className="w-4 h-4 mr-2" />
@@ -72,10 +72,17 @@ export default function Contact() {
           <Button
             variant="outline"
             size="lg"
-            className="border-blue-200 text-blue-600 hover:bg-blue-50 bg-transparent dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/20 cursor-not-allowed"
+            className="border-blue-200 text-blue-600 hover:bg-blue-50 bg-transparent dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/20"
           >
+                        <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href={"https://wa.me/628812470248"}
+              className="flex items-center"
+            >
             <SiWhatsapp className="w-4 h-4 mr-2" />
             {data.cta?.secondary || "Schedule Call"}
+            </Link>
           </Button>
         </div>
       </div>

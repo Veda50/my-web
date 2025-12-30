@@ -19,14 +19,6 @@ export default function About() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex-1"></div>
             <h2 className="font-serif text-4xl font-bold text-slate-900 dark:text-white">{data.title}</h2>
-            <div className="flex-1 flex justify-end">
-              <Link href="/about/skills" className="text-sm text-slate-500 hover:text-blue-600 transition-colors duration-300 group">
-                <span className="border-b border-dotted border-slate-300 group-hover:border-blue-600">
-                  detailed expertise
-                </span>
-                <ArrowRight className="w-3 h-3 ml-1 inline-block group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
           </div>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">{data.subtitle}</p>
         </div>
