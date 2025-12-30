@@ -6,7 +6,7 @@ import { Mail, Calendar } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import enLanding from "@/data/en/landingPage.json"
 import idLanding from "@/data/id/landingPage.json"
-import { SiGithub, SiLinkedin } from "react-icons/si"
+import { SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si"
 import Link from "next/link"
 
 export default function Contact() {
@@ -17,7 +17,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 px-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-800 dark:to-slate-900"
+      className="py-16 px-6 bg-linear-to-br from-blue-50 to-blue-100 dark:from-slate-800 dark:to-slate-900"
     >
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-4">
@@ -65,7 +65,7 @@ export default function Contact() {
               href={"https://wa.me/628812470248"}
               className="flex items-center"
             >
-              <Mail className="w-4 h-4 mr-2" />
+              <SiLinkedin className="w-4 h-4 mr-2" />
               {data.cta?.primary || "Send Message"}
             </Link>
           </Button>
@@ -74,7 +74,7 @@ export default function Contact() {
             size="lg"
             className="border-blue-200 text-blue-600 hover:bg-blue-50 bg-transparent dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/20 cursor-not-allowed"
           >
-            <Calendar className="w-4 h-4 mr-2" />
+            <SiWhatsapp className="w-4 h-4 mr-2" />
             {data.cta?.secondary || "Schedule Call"}
           </Button>
         </div>

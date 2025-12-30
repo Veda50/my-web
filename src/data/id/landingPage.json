@@ -138,14 +138,13 @@
   "testimonials": {
     "title": "Testimoni",
     "subtitle": "Apa kata klien dan rekan kerja tentang pengalaman bekerja dengan saya"
-
   },
   "contacts": {
     "title": "Ayo Terhubung dan Berkolaborasi",
     "subtitle": "Siap mewujudkan ide Anda? Saya ingin mendengar tentang proyek Anda dan mencari cara agar kita dapat bekerja sama menciptakan sesuatu yang luar biasa.",
     "cta": {
-      "primary": "Kirim Pesan",
-      "secondary": "Jadwalkan Panggilan"
+      "primary": "Hubungi Saya",
+      "secondary": "Pesan Langsung"
     }
   }
 }
