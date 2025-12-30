@@ -16,9 +16,8 @@ export default function About() {
     <section id="about" className="py-16 px-6 bg-white dark:bg-slate-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex-1"></div>
-            <h2 className="font-serif text-4xl font-bold text-slate-900 dark:text-white">{data.title}</h2>
+          <div className="flex items-center justify-center">
+            <h2 className="font-serif text-4xl font-bold text-slate-900 dark:text-white justify-center">{data.title}</h2>
           </div>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">{data.subtitle}</p>
         </div>
