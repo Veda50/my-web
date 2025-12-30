@@ -73,11 +73,12 @@ export default function Testimonials({
               {items.map((it, i) => (
                 <Card
                   key={i}
-                  className="w-96 shrink-0 relative bg-card text-card-foreground border-border hover:shadow-lg transition-shadow h-[50vh]"
+                  className="w-96 shrink-0 relative bg-card text-card-foreground border-border hover:shadow-lg transition-shadow"
+                  style={{ height: 'clamp(320px, 50vh, 500px)' }}
                 >
                   <CardContent className="p-6 h-full flex flex-col">
                     {/* Profil di atas */}
-                    <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-4 mb-6 shrink-0">
                       <Avatar className="ring-1 ring-border">
                         <AvatarImage src={it.avatar || "/placeholder.svg"} />
                         <AvatarFallback className="bg-muted text-foreground">
@@ -92,11 +93,13 @@ export default function Testimonials({
                     </div>
 
                     {/* Teks testimoni */}
-                    <div className="relative flex-1">
+                    <div className="relative flex-1 overflow-hidden">
                       <Quote className="absolute -top-2 right-0 w-8 h-8 text-blue-200/60 dark:text-blue-300/30" />
-                      <p className="italic leading-relaxed text-muted-foreground pr-10 overflow-hidden">
-                        “{it.content}”
-                      </p>
+                      <div className="h-full overflow-y-auto pr-10 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                        <p className="italic leading-relaxed text-muted-foreground">
+                          "{it.content}"
+                        </p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -108,11 +111,12 @@ export default function Testimonials({
             {items.map((it, i) => (
               <Card
                 key={i}
-                className="relative bg-card text-card-foreground border-border hover:shadow-lg transition-shadow h-[50vh]"
+                className="relative bg-card text-card-foreground border-border hover:shadow-lg transition-shadow"
+                style={{ height: 'clamp(320px, 50vh, 500px)' }}
               >
-                <CardContent className="p-6 h-full flex flex-col ">
+                <CardContent className="p-6 h-full flex flex-col">
                   {/* Profil di atas */}
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-4 mb-6 shrink-0">
                     <Avatar className="ring-1 ring-border">
                       <AvatarImage src={it.avatar || "/placeholder.svg"} />
                       <AvatarFallback className="bg-muted text-foreground">
@@ -127,11 +131,13 @@ export default function Testimonials({
                   </div>
 
                   {/* Teks testimoni */}
-                  <div className="relative flex-1">
+                  <div className="relative flex-1 overflow-hidden">
                     <Quote className="absolute -top-2 right-0 w-8 h-8 text-blue-200/60 dark:text-blue-300/30" />
-                    <p className="italic leading-relaxed text-muted-foreground pr-10 overflow-hidden">
-                      “{it.content}”
-                    </p>
+                    <div className="h-full overflow-y-auto pr-10 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                      <p className="italic leading-relaxed text-muted-foreground">
+                        &quot;{it.content}&quot;
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
