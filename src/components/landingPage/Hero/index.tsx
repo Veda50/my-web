@@ -55,8 +55,10 @@ export default function Hero({ isVisible, scrollToSection }: HeroProps) {
   }, [])
 
   const data = language === 'en' ? enLanding.hero : idLanding.hero
-  const totalProject: number = projectPageData.projects.length + 1
-  const totalExperiences: number = new Date().getFullYear() - 2023
+  const totalProject: number = projectPageData.projects.length + 1;
+  const totalExperiences: number =
+    new Date().getFullYear() - 2023 
+    - (new Date().getMonth() < 8 ? 1 : 0);
 
   return (
     <>
